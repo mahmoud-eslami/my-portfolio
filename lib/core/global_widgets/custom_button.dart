@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/core/constants/constants.dart';
 
-class CustomButton extends StatelessWidget {
+class CustomButton extends StatefulWidget {
   const CustomButton({
     super.key,
     required this.title,
@@ -15,28 +15,54 @@ class CustomButton extends StatelessWidget {
   final double? width, height;
 
   @override
+  State<CustomButton> createState() => _CustomButtonState();
+}
+
+class _CustomButtonState extends State<CustomButton> {
+  bool isHoverd = false;
+
+  @override
   Widget build(BuildContext context) {
-    var style = const TextStyle(
+    var style = TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: 20,
-      color: Colors.black,
+      color: isHoverd ? Constants.creamColor : Colors.black,
     );
-    return SizedBox(
-      width: width,
-      height: height,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5),
-        child: FilledButton(
-          style: const ButtonStyle(
-            backgroundColor: MaterialStatePropertyAll<Color>(
-              Constants.orangeColor,
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onHover: (event) {
+        setState(() {
+          isHoverd = true;
+        });
+      },
+      onExit: (event) {
+        setState(() {
+          isHoverd = false;
+        });
+      },
+      child: SizedBox(
+        width: widget.width,
+        height: widget.height,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 5),
+          child: FilledButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStatePropertyAll<Color>(
+                isHoverd ? Colors.black : Constants.orangeColor,
+              ),
+              elevation: MaterialStatePropertyAll<double>(isHoverd ? 15 : 5),
+              side: MaterialStatePropertyAll<BorderSide>(
+                BorderSide(
+                  color: isHoverd ? Constants.orangeColor : Colors.transparent,
+                  width: 3,
+                ),
+              ),
             ),
-            elevation: MaterialStatePropertyAll<double>(5),
-          ),
-          onPressed: onPressed,
-          child: Text(
-            title,
-            style: style,
+            onPressed: widget.onPressed,
+            child: Text(
+              widget.title,
+              style: style,
+            ),
           ),
         ),
       ),

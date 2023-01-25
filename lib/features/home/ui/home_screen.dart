@@ -48,7 +48,7 @@ class MobileSize extends StatelessWidget {
                 ),
                 ButtonsSection(),
                 SizedBox(
-                  height: 5,
+                  height: 25,
                 ),
               ],
             ),
