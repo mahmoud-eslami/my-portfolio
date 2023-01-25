@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/core/constants/constants.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -17,7 +18,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     var style = const TextStyle(
       fontWeight: FontWeight.bold,
-      fontSize: 30,
+      fontSize: 20,
       color: Colors.black,
     );
     return SizedBox(
@@ -28,7 +29,7 @@ class CustomButton extends StatelessWidget {
         child: FilledButton(
           style: const ButtonStyle(
             backgroundColor: MaterialStatePropertyAll<Color>(
-              Color(0xffF6820C),
+              Constants.orangeColor,
             ),
             elevation: MaterialStatePropertyAll<double>(5),
           ),

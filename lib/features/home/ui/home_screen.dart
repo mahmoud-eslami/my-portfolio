@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/features/home/ui/widgets/name_logo.dart';
 import 'package:flutter_portfolio/features/home/ui/widgets/social_section.dart';
 
-import '../../../core/utils/size_config.dart';
 import 'widgets/buttons_section.dart';
 import 'widgets/profile_section.dart';
 import 'widgets/title_section.dart';
@@ -20,6 +20,7 @@ class MobileSize extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const spacer = 40.0;
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -27,22 +28,26 @@ class MobileSize extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: [
+              children: const [
+                SizedBox(
+                  height: spacer,
+                ),
                 Center(
-                    child: Image.asset(
-                  "images/name_logo.png",
-                  width: SizeConfig.imageSizeMultiplier * 80,
-                )),
-                const ProfileSection(),
-                const SizedBox(
-                  height: 40,
+                  child: NameLogo(),
                 ),
-                const TitleSection(),
-                const SizedBox(
-                  height: 40,
+                SizedBox(
+                  height: spacer,
                 ),
-                const ButtonsSection(),
-                const SizedBox(
+                ProfileSection(),
+                SizedBox(
+                  height: spacer,
+                ),
+                TitleSection(),
+                SizedBox(
+                  height: spacer,
+                ),
+                ButtonsSection(),
+                SizedBox(
                   height: 5,
                 ),
               ],

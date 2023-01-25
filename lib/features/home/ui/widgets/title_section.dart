@@ -9,37 +9,38 @@ class TitleSection extends StatelessWidget {
   Widget build(BuildContext context) {
     var style = const TextStyle(
       fontWeight: FontWeight.bold,
-      fontSize: 30,
+      fontSize: 25,
     );
-    return RichText(
-      textAlign: TextAlign.center,
-      text: TextSpan(
-        children: [
-          TextSpan(
-            text: "A highly skilled Flutter  ",
-            style: style,
-          ),
-          WidgetSpan(
-              child: Image.asset(
-            "images/flutter_logo.png",
-            width: SizeConfig.imageSizeMultiplier * 13,
-          )),
-          TextSpan(
-            text:
-                "  developer over three years of experience building cross-platform mobile  ",
-            style: style,
-          ),
-          WidgetSpan(
-              child: Image.asset(
-            "images/mobile_logo.png",
-            width: SizeConfig.imageSizeMultiplier * 13,
-          )),
-          TextSpan(
-            text: "  applications.",
-            style: style,
-          ),
-        ],
-      ),
+    return Wrap(
+      crossAxisAlignment: WrapCrossAlignment.end,
+      alignment: WrapAlignment.center,
+      runAlignment: WrapAlignment.end,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      children: [
+        Text(
+          "A highly skilled Flutter  ",
+          style: style,
+          textAlign: TextAlign.center,
+        ),
+        Image.asset(
+          "images/flutter_logo.png",
+          width: SizeConfig.imageSizeMultiplier * 13,
+        ),
+        Text(
+          "  developer over three years of experience building cross-platform mobile  ",
+          style: style,
+          textAlign: TextAlign.center,
+        ),
+        Image.asset(
+          "images/mobile_logo.png",
+          width: SizeConfig.imageSizeMultiplier * 13,
+        ),
+        Text(
+          "  applications.",
+          style: style,
+          textAlign: TextAlign.center,
+        ),
+      ],
     );
   }
 }
