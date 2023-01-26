@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/constants.dart';
@@ -14,7 +13,6 @@ class ProjectsSection extends StatelessWidget {
       fontSize: 30,
       color: Constants.creamColor,
     );
-
 
     var outerBoxSize = 730.0;
     return SizedBox(

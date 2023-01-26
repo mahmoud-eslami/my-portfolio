@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/core/constants/constants.dart';
+import 'package:flutter_portfolio/core/global_widgets/custom_button.dart';
 import 'package:flutter_portfolio/features/home/ui/widgets/name_logo.dart';
 import 'package:flutter_portfolio/features/home/ui/widgets/skills_sections.dart';
 import 'package:flutter_portfolio/features/home/ui/widgets/social_section.dart';
 
 import 'widgets/buttons_section.dart';
+import 'widgets/footer_section.dart';
 import 'widgets/profile_section.dart';
 import 'widgets/projects_section.dart';
 import 'widgets/title_section.dart';
@@ -63,6 +66,11 @@ class MobileSize extends StatelessWidget {
           ),
           const ProjectsSection(),
           const SkillsSection(),
+          const SizedBox(
+            height: spacer,
+          ),
+          const FooterSection(),
+          const CopyRightSection(),
         ],
       ),
     );
