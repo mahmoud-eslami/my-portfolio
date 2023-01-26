@@ -15,7 +15,7 @@ class WhatIDoSection extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 100,
+          height: 80,
           child: Stack(
             children: [
               Center(

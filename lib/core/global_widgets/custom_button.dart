@@ -51,6 +51,13 @@ class _CustomButtonState extends State<CustomButton> {
                 isHoverd ? Colors.black : Constants.orangeColor,
               ),
               elevation: MaterialStatePropertyAll<double>(isHoverd ? 15 : 5),
+              shape: MaterialStatePropertyAll<OutlinedBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(isHoverd ? 15 : 35),
+                  ),
+                ),
+              ),
             ),
             onPressed: widget.onPressed,
             child: Text(

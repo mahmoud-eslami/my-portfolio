@@ -12,7 +12,7 @@ class CurvedPainter extends CustomPainter {
     var downerPath = Path();
     var upperPath = Path();
 
-    downerPath.moveTo(0, size.height * 0.8);
+    downerPath.moveTo(0, size.height * 0.9);
     downerPath.quadraticBezierTo(
       size.width * 0.25,
       size.height * 0.7,
