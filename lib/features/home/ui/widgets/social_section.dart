@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/core/constants/constants.dart';
 import 'package:flutter_portfolio/features/home/ui/widgets/curved_painter.dart';
 
-import '../../../../core/utils/size_config.dart';
-
 class SocialSection extends StatelessWidget {
   const SocialSection({super.key});
 
@@ -11,7 +9,7 @@ class SocialSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black,
-      width: SizeConfig.widthMultiplier * 100,
+      width: MediaQuery.of(context).size.width * 100,
       height: 500,
       child: CustomPaint(
         painter: CurvedPainter(),

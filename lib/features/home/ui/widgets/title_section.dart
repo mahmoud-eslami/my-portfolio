@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/size_config.dart';
-
 class TitleSection extends StatelessWidget {
   const TitleSection({super.key});
 
@@ -11,6 +9,7 @@ class TitleSection extends StatelessWidget {
       fontWeight: FontWeight.bold,
       fontSize: 25,
     );
+    var size = MediaQuery.of(context).size;
     return Wrap(
       crossAxisAlignment: WrapCrossAlignment.end,
       alignment: WrapAlignment.center,
@@ -24,7 +23,7 @@ class TitleSection extends StatelessWidget {
         ),
         Image.asset(
           "images/flutter_logo.png",
-          width: SizeConfig.imageSizeMultiplier * 13,
+          width: size.width * .13,
         ),
         Text(
           "  developer over three years of experience building cross-platform mobile  ",
@@ -33,7 +32,7 @@ class TitleSection extends StatelessWidget {
         ),
         Image.asset(
           "images/mobile_logo.png",
-          width: SizeConfig.imageSizeMultiplier * 13,
+          width: size.width * .13,
         ),
         Text(
           "  applications.",

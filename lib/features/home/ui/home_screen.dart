@@ -5,6 +5,7 @@ import 'package:flutter_portfolio/features/home/ui/widgets/social_section.dart';
 import 'widgets/buttons_section.dart';
 import 'widgets/profile_section.dart';
 import 'widgets/title_section.dart';
+import 'widgets/what_do_section.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -44,7 +45,7 @@ class MobileSize extends StatelessWidget {
                 ),
                 TitleSection(),
                 SizedBox(
-                  height: spacer,
+                  height: spacer + 10,
                 ),
                 ButtonsSection(),
                 SizedBox(
@@ -54,6 +55,10 @@ class MobileSize extends StatelessWidget {
             ),
           ),
           const SocialSection(),
+          const WhatIDoSection(),
+          const SizedBox(
+            height: spacer,
+          ),
         ],
       ),
     );
