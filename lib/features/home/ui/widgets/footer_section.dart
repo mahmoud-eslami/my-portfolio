@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/global_widgets/custom_button.dart';
+import '../../../../core/utils/size_checker.dart';
 
 class FooterSection extends StatelessWidget {
   const FooterSection({super.key});
@@ -14,6 +15,8 @@ class FooterSection extends StatelessWidget {
       color: Constants.creamColor,
     );
     var size = MediaQuery.of(context).size;
+    bool isMobile = SizeChecker.isMobile(context);
+
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -39,9 +42,9 @@ class FooterSection extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           CustomButton(
-            title: "Let’s Talk Together",
+            title: "Talk to me",
             onPressed: () {},
-            width: size.width * .6,
+            width: isMobile ? size.width * .6 : Constants.desktopButtonWidth,
             height: 60,
           ),
         ],

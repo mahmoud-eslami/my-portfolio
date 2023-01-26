@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/core/constants/constants.dart';
-import 'package:flutter_portfolio/core/global_widgets/custom_button.dart';
+import 'package:flutter_portfolio/core/utils/size_checker.dart';
 import 'package:flutter_portfolio/features/home/ui/widgets/name_logo.dart';
 import 'package:flutter_portfolio/features/home/ui/widgets/skills_sections.dart';
 import 'package:flutter_portfolio/features/home/ui/widgets/social_section.dart';
@@ -17,7 +17,66 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: MobileSize());
+    return Scaffold(
+        body: SizeChecker.isMobile(context)
+            ? const MobileSize()
+            : const DesktopSize());
+  }
+}
+
+class DesktopSize extends StatelessWidget {
+  const DesktopSize({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    const spacer = 40.0;
+    var size = MediaQuery.of(context).size;
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: size.width * .2),
+            child: Column(
+              children: const [
+                SizedBox(
+                  height: spacer,
+                ),
+                Center(
+                  child: NameLogo(),
+                ),
+                SizedBox(
+                  height: spacer,
+                ),
+                ProfileSection(),
+                SizedBox(
+                  height: spacer,
+                ),
+                TitleSection(),
+                SizedBox(
+                  height: spacer,
+                ),
+                ButtonsSection(),
+                SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
+          ),
+          const SocialSection(),
+          const WhatIDoSection(),
+          const SizedBox(
+            height: spacer + 10,
+          ),
+          const ProjectsSection(),
+          const SkillsSection(),
+          const SizedBox(
+            height: spacer,
+          ),
+          const FooterSection(),
+          const CopyRightSection(),
+        ],
+      ),
+    );
   }
 }
 
@@ -31,7 +90,8 @@ class MobileSize extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: Constants.mobileHorizontalPadding),
+            padding: const EdgeInsets.symmetric(
+                horizontal: Constants.mobileHorizontalPadding),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: const [

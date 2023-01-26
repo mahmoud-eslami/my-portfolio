@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/core/constants/constants.dart';
 
+import '../../../../core/utils/size_checker.dart';
+
 class TitleSection extends StatelessWidget {
   const TitleSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var style = const TextStyle(
+    bool isMobile = SizeChecker.isMobile(context);
+
+    var style = TextStyle(
       fontWeight: FontWeight.bold,
-      fontSize: Constants.mobileDescriptionSize,
+      fontSize: isMobile
+          ? Constants.mobileDescriptionSize
+          : Constants.desktopDescriptionSize,
     );
     var size = MediaQuery.of(context).size;
+
     return Wrap(
       crossAxisAlignment: WrapCrossAlignment.end,
       alignment: WrapAlignment.center,
@@ -24,19 +31,10 @@ class TitleSection extends StatelessWidget {
         ),
         Image.asset(
           "images/flutter_logo.png",
-          width: size.width * .1,
+          width: isMobile ? size.width * .1 : 90,
         ),
         Text(
-          "  developer over three years of experience building cross-platform mobile  ",
-          style: style,
-          textAlign: TextAlign.center,
-        ),
-        Image.asset(
-          "images/mobile_logo.png",
-          width: size.width * .1,
-        ),
-        Text(
-          "  applications.",
+          "  developer over three years of experience building cross-platform mobile applications.",
           style: style,
           textAlign: TextAlign.center,
         ),

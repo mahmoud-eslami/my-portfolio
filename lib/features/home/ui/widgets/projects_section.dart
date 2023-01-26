@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/constants.dart';
+import '../../../../core/utils/size_checker.dart';
 
 class ProjectsSection extends StatelessWidget {
   const ProjectsSection({super.key});
@@ -89,6 +90,8 @@ class _ProjectItemState extends State<ProjectItem> {
       color: Constants.creamColor,
       fontSize: Constants.mobileTitleSize,
     );
+    bool isMobile = SizeChecker.isMobile(context);
+
     return MouseRegion(
       onEnter: (event) {
         isHover = true;
@@ -99,7 +102,7 @@ class _ProjectItemState extends State<ProjectItem> {
         setState(() {});
       },
       child: Container(
-        width: size.width * .9,
+        width: isMobile ? size.width * .9 : 450,
         height: 450,
         decoration: BoxDecoration(
           color: Constants.creamColor.withOpacity(.2),

@@ -1,24 +1,112 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants/constants.dart';
+import '../../../../core/utils/size_checker.dart';
 
 class SkillsSection extends StatelessWidget {
   const SkillsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var style = const TextStyle(
-      fontWeight: FontWeight.bold,
-      fontSize: Constants.mobileTitleSize,
-      color: Colors.black,
-    );
+    return _builder(context);
+  }
+
+  _builder(BuildContext context) {
+    bool isMobile = SizeChecker.isMobile(context);
     var size = MediaQuery.of(context).size;
+
+    if (isMobile) {
+      return Column(
+        children: [
+          const SizedBox(
+            height: 30,
+          ),
+          mainSkills(context),
+          const SizedBox(
+            height: 30,
+          ),
+          softwareSkills(context),
+          const SizedBox(
+            height: 30,
+          ),
+          designSkills(context),
+          const SizedBox(
+            height: 30,
+          ),
+          familierSkills(context),
+          const SizedBox(
+            height: 30,
+          ),
+        ],
+      );
+    }
 
     return Column(
       children: [
         const SizedBox(
           height: 30,
         ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: size.width * .4,
+              child: mainSkills(context),
+            ),
+            const SizedBox(
+              width: 30,
+            ),
+            SizedBox(
+              width: size.width * .4,
+              child: softwareSkills(context),
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 30,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: size.width * .4,
+              child: designSkills(context),
+            ),
+            const SizedBox(
+              width: 30,
+            ),
+            SizedBox(
+              width: size.width * .4,
+              child: familierSkills(context),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  lineSplitter(BuildContext context) {
+    bool isMobile = SizeChecker.isMobile(context);
+    var size = MediaQuery.of(context).size;
+
+    return Container(
+      width: size.width * (isMobile ? .5 : .2),
+      height: 3,
+      color: Constants.orangeColor,
+    );
+  }
+
+  mainSkills(BuildContext context) {
+    var style = const TextStyle(
+      fontWeight: FontWeight.bold,
+      fontSize: Constants.mobileTitleSize,
+      color: Colors.black,
+    );
+
+    return Column(
+      children: [
         Column(
           children: [
             Text(
@@ -28,11 +116,7 @@ class SkillsSection extends StatelessWidget {
             const SizedBox(
               height: 4,
             ),
-            Container(
-              width: size.width * .5,
-              height: 3,
-              color: Constants.orangeColor,
-            ),
+            lineSplitter(context),
           ],
         ),
         const SizedBox(
@@ -67,9 +151,19 @@ class SkillsSection extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(
-          height: 30,
-        ),
+      ],
+    );
+  }
+
+  softwareSkills(BuildContext context) {
+    var style = const TextStyle(
+      fontWeight: FontWeight.bold,
+      fontSize: Constants.mobileTitleSize,
+      color: Colors.black,
+    );
+
+    return Column(
+      children: [
         Column(
           children: [
             Text(
@@ -79,11 +173,7 @@ class SkillsSection extends StatelessWidget {
             const SizedBox(
               height: 4,
             ),
-            Container(
-              width: size.width * .5,
-              height: 3,
-              color: Constants.orangeColor,
-            ),
+            lineSplitter(context),
           ],
         ),
         const SizedBox(
@@ -110,9 +200,19 @@ class SkillsSection extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(
-          height: 30,
-        ),
+      ],
+    );
+  }
+
+  designSkills(BuildContext context) {
+    var style = const TextStyle(
+      fontWeight: FontWeight.bold,
+      fontSize: Constants.mobileTitleSize,
+      color: Colors.black,
+    );
+
+    return Column(
+      children: [
         Column(
           children: [
             Text(
@@ -122,11 +222,7 @@ class SkillsSection extends StatelessWidget {
             const SizedBox(
               height: 4,
             ),
-            Container(
-              width: size.width * .5,
-              height: 3,
-              color: Constants.orangeColor,
-            ),
+            lineSplitter(context),
           ],
         ),
         const SizedBox(
@@ -153,9 +249,19 @@ class SkillsSection extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(
-          height: 30,
-        ),
+      ],
+    );
+  }
+
+  familierSkills(BuildContext context) {
+    var style = const TextStyle(
+      fontWeight: FontWeight.bold,
+      fontSize: Constants.mobileTitleSize,
+      color: Colors.black,
+    );
+    var size = MediaQuery.of(context).size;
+    return Column(
+      children: [
         Column(
           children: [
             Text(
@@ -165,11 +271,7 @@ class SkillsSection extends StatelessWidget {
             const SizedBox(
               height: 4,
             ),
-            Container(
-              width: size.width * .5,
-              height: 3,
-              color: Constants.orangeColor,
-            ),
+            lineSplitter(context),
           ],
         ),
         const SizedBox(

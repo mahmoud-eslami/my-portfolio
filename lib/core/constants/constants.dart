@@ -17,6 +17,7 @@ class Constants {
       "I also have experience working with Firebase, RESTful APIs, and other programming languages and frameworks which can be beneficial for building robust mobile applications.";
 
   // dimens
+  // mobile
   static const mobileHeadSize = 40.0;
   static const mobileTitleSize = 30.0;
   static const mobileDescriptionSize = 25.0;
@@ -25,6 +26,12 @@ class Constants {
   static const mobileHorizontalPadding = 20.0;
   static const mobileVerticalPadding = 20.0;
   static const mobileBtnHeight = 60.0;
+
+  // desktop
+  static const desktopButtonWidth = 200.0;
+  static const desktopButtonHeight = 70.0;
+  static const desktopDescriptionSize = 40.0;
+  static const desktopCaptionSize = 20.0;
 
   static const highElevation = 20.0;
   static const infinitieBorderRadius = 1000.0;
