@@ -7,14 +7,37 @@ class SocialSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black,
-      width: MediaQuery.of(context).size.width * 100,
-      height: 500,
-      child: CustomPaint(
-        painter: CurvedPainter(),
-        child: const Socials(),
-      ),
+    return Stack(
+      children: [
+        Column(
+          children: [
+            Container(
+              color: Colors.transparent,
+              width: MediaQuery.of(context).size.width * 100,
+              height: 10,
+            ),
+            Container(
+              color: Colors.black,
+              width: MediaQuery.of(context).size.width * 100,
+              height: 280,
+            ),
+            Container(
+              color: Colors.transparent,
+              width: MediaQuery.of(context).size.width * 100,
+              height: 10,
+            ),
+          ],
+        ),
+        Container(
+          color: Colors.transparent,
+          width: MediaQuery.of(context).size.width * 100,
+          height: 300,
+          child: CustomPaint(
+            painter: CurvedPainter(),
+            child: const Socials(),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -38,7 +61,7 @@ class Socials extends StatelessWidget {
           "How reach me ?",
           style: style,
         ),
-        const SizedBox(height: 40),
+        const SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
