@@ -31,7 +31,7 @@ class MobileSize extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: Constants.mobileHorizontalPadding),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: const [

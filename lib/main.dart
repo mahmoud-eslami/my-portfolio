@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Mahmoud.dev',
           theme: ThemeData(
-            primarySwatch: Colors.blue,
+            primarySwatch: Colors.orange,
             fontFamily: "dosis",
             scaffoldBackgroundColor: Constants.creamColor,
           ),

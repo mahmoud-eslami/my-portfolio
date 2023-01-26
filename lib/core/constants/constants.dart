@@ -15,4 +15,17 @@ class Constants {
       "I specialize in building high-performance, responsive, and elegant mobile applications using the Flutter framework and Dart programming language.";
   static const otherExpDescription =
       "I also have experience working with Firebase, RESTful APIs, and other programming languages and frameworks which can be beneficial for building robust mobile applications.";
+
+  // dimens
+  static const mobileHeadSize = 40.0;
+  static const mobileTitleSize = 30.0;
+  static const mobileDescriptionSize = 25.0;
+  static const mobileCaptionSize = 14.0;
+  static const mobilePadding = 8.0;
+  static const mobileHorizontalPadding = 20.0;
+  static const mobileVerticalPadding = 20.0;
+  static const mobileBtnHeight = 60.0;
+
+  static const highElevation = 20.0;
+  static const infinitieBorderRadius = 1000.0;
 }

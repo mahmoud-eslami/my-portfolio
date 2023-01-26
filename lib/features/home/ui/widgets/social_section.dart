@@ -49,7 +49,7 @@ class Socials extends StatelessWidget {
   Widget build(BuildContext context) {
     var style = const TextStyle(
       fontWeight: FontWeight.bold,
-      fontSize: 30,
+      fontSize: Constants.mobileTitleSize,
       color: Constants.creamColor,
     );
     var iconSize = 60.0;

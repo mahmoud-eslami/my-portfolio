@@ -10,7 +10,7 @@ class FooterSection extends StatelessWidget {
   Widget build(BuildContext context) {
     var style = const TextStyle(
       fontWeight: FontWeight.bold,
-      fontSize: 25,
+      fontSize: Constants.mobileTitleSize,
       color: Constants.creamColor,
     );
     var size = MediaQuery.of(context).size;
@@ -57,7 +57,7 @@ class CopyRightSection extends StatelessWidget {
   Widget build(BuildContext context) {
     var style = const TextStyle(
       fontWeight: FontWeight.normal,
-      fontSize: 15,
+      fontSize: Constants.mobileCaptionSize,
       color: Constants.creamColor,
     );
     var size = MediaQuery.of(context).size;
@@ -65,7 +65,7 @@ class CopyRightSection extends StatelessWidget {
       color: Colors.black,
       width: size.width,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(Constants.mobilePadding),
         child: Center(
             child: Text(
           "© 2023 Mahmoud Eslami | All rights reserved",

@@ -10,11 +10,12 @@ class ProjectsSection extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     var style = const TextStyle(
       fontWeight: FontWeight.bold,
-      fontSize: 30,
+      fontSize: Constants.mobileTitleSize,
       color: Constants.creamColor,
     );
 
     var outerBoxSize = 730.0;
+    const spacer = 50.0;
     return SizedBox(
       height: outerBoxSize,
       child: Stack(
@@ -29,12 +30,12 @@ class ProjectsSection extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  const SizedBox(height: 50),
+                  const SizedBox(height: spacer),
                   Text(
                     "Projects",
                     style: style,
                   ),
-                  const SizedBox(height: 50),
+                  const SizedBox(height: spacer),
                   const ProjectItem(
                     imagePath: "images/project1.png",
                     title: "Amastas",
@@ -86,7 +87,7 @@ class _ProjectItemState extends State<ProjectItem> {
     var style = const TextStyle(
       fontWeight: FontWeight.bold,
       color: Constants.creamColor,
-      fontSize: 30,
+      fontSize: Constants.mobileTitleSize,
     );
     return MouseRegion(
       onEnter: (event) {

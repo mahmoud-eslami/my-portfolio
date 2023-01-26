@@ -9,7 +9,7 @@ class SkillsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     var style = const TextStyle(
       fontWeight: FontWeight.bold,
-      fontSize: 30,
+      fontSize: Constants.mobileTitleSize,
       color: Colors.black,
     );
     var size = MediaQuery.of(context).size;
@@ -212,13 +212,13 @@ class SkillItem extends StatelessWidget {
   Widget build(BuildContext context) {
     var style = TextStyle(
       fontWeight: FontWeight.bold,
-      fontSize: 15,
+      fontSize: Constants.mobileCaptionSize,
       color: (imagePath != null) ? Constants.creamColor : Colors.black,
     );
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(Constants.mobilePadding),
       child: Container(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(Constants.mobilePadding),
         width: isLong ? 200 : 120,
         decoration: BoxDecoration(
           color: (imagePath != null) ? Colors.black : Colors.transparent,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/core/constants/constants.dart';
 
 class ProfileSection extends StatelessWidget {
   const ProfileSection({super.key});
@@ -20,9 +21,9 @@ class ProfileSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Material(
-              elevation: 20,
+              elevation: Constants.highElevation,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(1000),
+                borderRadius: BorderRadius.circular(Constants.infinitieBorderRadius),
                 side: const BorderSide(color: Colors.black, width: 2),
               ),
               clipBehavior: Clip.antiAliasWithSaveLayer,

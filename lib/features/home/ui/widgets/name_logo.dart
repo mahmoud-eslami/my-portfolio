@@ -9,11 +9,12 @@ class NameLogo extends StatelessWidget {
     var style = const TextStyle(
       fontWeight: FontWeight.bold,
       color: Colors.black,
-      fontSize: 40,
+      fontSize: Constants.mobileHeadSize,
       fontFamily: "dosis",
     );
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      padding: const EdgeInsets.symmetric(
+          horizontal: Constants.mobileHorizontalPadding),
       child: RichText(
         text: TextSpan(children: [
           TextSpan(

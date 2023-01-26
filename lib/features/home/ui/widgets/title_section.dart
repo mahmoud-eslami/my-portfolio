@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/core/constants/constants.dart';
 
 class TitleSection extends StatelessWidget {
   const TitleSection({super.key});
@@ -7,7 +8,7 @@ class TitleSection extends StatelessWidget {
   Widget build(BuildContext context) {
     var style = const TextStyle(
       fontWeight: FontWeight.bold,
-      fontSize: 25,
+      fontSize: Constants.mobileDescriptionSize,
     );
     var size = MediaQuery.of(context).size;
     return Wrap(

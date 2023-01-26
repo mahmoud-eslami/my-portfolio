@@ -9,7 +9,7 @@ class WhatIDoSection extends StatelessWidget {
   Widget build(BuildContext context) {
     var style = const TextStyle(
       fontWeight: FontWeight.bold,
-      fontSize: 30,
+      fontSize: Constants.mobileTitleSize,
       color: Colors.black,
     );
     return Column(
@@ -71,8 +71,8 @@ class WhatIDoItem extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 20,
+        horizontal: Constants.mobileHorizontalPadding,
+        vertical: Constants.mobileVerticalPadding,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
