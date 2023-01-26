@@ -10,6 +10,7 @@ class NameLogo extends StatelessWidget {
       fontWeight: FontWeight.bold,
       color: Colors.black,
       fontSize: 40,
+      fontFamily: "dosis",
     );
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -19,18 +20,21 @@ class NameLogo extends StatelessWidget {
             text: "<",
             style: style.copyWith(
               color: Constants.orangeColor,
+              fontFamily: "dosis",
             ),
           ),
           TextSpan(
             text: "/",
             style: style.copyWith(
               color: Colors.blue,
+              fontFamily: "dosis",
             ),
           ),
           TextSpan(
             text: ">",
             style: style.copyWith(
               color: Constants.orangeColor,
+              fontFamily: "dosis",
             ),
           ),
           TextSpan(text: " Mahmoud.DEV", style: style),

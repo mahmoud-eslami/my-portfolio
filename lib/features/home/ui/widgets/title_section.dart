@@ -23,7 +23,7 @@ class TitleSection extends StatelessWidget {
         ),
         Image.asset(
           "images/flutter_logo.png",
-          width: size.width * .13,
+          width: size.width * .1,
         ),
         Text(
           "  developer over three years of experience building cross-platform mobile  ",
@@ -32,7 +32,7 @@ class TitleSection extends StatelessWidget {
         ),
         Image.asset(
           "images/mobile_logo.png",
-          width: size.width * .13,
+          width: size.width * .1,
         ),
         Text(
           "  applications.",

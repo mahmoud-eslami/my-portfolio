@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           title: 'Mahmoud.dev',
           theme: ThemeData(
             primarySwatch: Colors.blue,
-            fontFamily: "opensans",
+            fontFamily: "dosis",
             scaffoldBackgroundColor: Constants.creamColor,
           ),
           home: const SelectionArea(

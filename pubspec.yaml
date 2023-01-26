@@ -80,6 +80,12 @@ flutter:
     - family: opensans
       fonts:
         - asset: assets/fonts/open-sans.ttf
+    - family: abo
+      fonts:
+        - asset: assets/fonts/abo.ttf
+    - family: dosis
+      fonts:
+        - asset: assets/fonts/dosis.ttf
 
   #   - family: Trajan Pro
   #     fonts:
