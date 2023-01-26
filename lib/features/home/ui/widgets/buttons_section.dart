@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/core/constants/constants.dart';
+import 'package:flutter_portfolio/core/utils/url_launcher.dart';
 
 import '../../../../core/global_widgets/custom_button.dart';
 import '../../../../core/utils/size_checker.dart';
@@ -38,7 +39,9 @@ class ButtonsSection extends StatelessWidget {
         children: [
           CustomButton(
             title: "Download CV",
-            onPressed: () {},
+            onPressed: () {
+              launchTheUrl(Constants.resumeUrl);
+            },
             width: Constants.desktopButtonWidth,
             height: Constants.desktopButtonHeight,
           ),
@@ -47,7 +50,9 @@ class ButtonsSection extends StatelessWidget {
           ),
           CustomButton(
             title: "Hire me !",
-            onPressed: () {},
+            onPressed: () {
+              launchTheUrl(Constants.emailUrl);
+            },
             width: Constants.desktopButtonWidth,
             height: Constants.desktopButtonHeight,
           ),

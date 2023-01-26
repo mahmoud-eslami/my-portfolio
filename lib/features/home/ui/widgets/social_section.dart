@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/core/constants/constants.dart';
+import 'package:flutter_portfolio/core/utils/url_launcher.dart';
 import 'package:flutter_portfolio/features/home/ui/widgets/curved_painter.dart';
 
 class SocialSection extends StatelessWidget {
@@ -66,7 +67,9 @@ class Socials extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             InkWell(
-              onTap: () {},
+              onTap: () {
+                launchTheUrl(Constants.githubUrl);
+              },
               child: Image.asset(
                 "images/github_logo.png",
                 height: iconSize,
@@ -77,7 +80,9 @@ class Socials extends StatelessWidget {
               width: sizedBoxValue,
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                launchTheUrl(Constants.stackUrl);
+              },
               child: Image.asset(
                 "images/stack_logo.png",
                 height: iconSize,
@@ -88,7 +93,9 @@ class Socials extends StatelessWidget {
               width: sizedBoxValue,
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                launchTheUrl(Constants.linkedinUrl);
+              },
               child: Image.asset(
                 "images/linkedin_logo.png",
                 height: iconSize,

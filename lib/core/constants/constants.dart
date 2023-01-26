@@ -5,6 +5,14 @@ class Constants {
   static const orangeColor = Color(0xffFF9551);
   static const greenColor = Color(0xff579BB1);
 
+  // urls
+  static const resumeUrl = "www.google.com";
+  static const emailUrl = "mailto:mahmoudeslami@hotmail.com";
+  static const linkedinUrl = "https://www.linkedin.com/in/mahmoud-eslami/";
+  static const githubUrl = "https://github.com/mahmoud-eslami";
+  static const stackUrl =
+      "https://stackoverflow.com/users/12496048/mahmoud-eslami";
+
   static const openSourceExpDescription =
       "I am passionate about open-source projects and enjoy collaborating with the community to share my knowledge and skills.";
   static const experienceDescription =

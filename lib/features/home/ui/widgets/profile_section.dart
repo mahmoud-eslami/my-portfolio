@@ -13,7 +13,7 @@ class ProfileSection extends StatelessWidget {
       children: [
         Positioned(
           top: isMobile ? 20 : 0,
-          left: size.width * .15,
+          left: size.width * .12,
           child: Image.asset(
             "images/hda5.png",
             width: size.width * (isMobile ? 0.15 : 0.08),
@@ -32,8 +32,8 @@ class ProfileSection extends StatelessWidget {
               clipBehavior: Clip.antiAliasWithSaveLayer,
               child: Image.asset(
                 "images/profile.jpg",
-                width: isMobile ? size.width * .3 : size.width * .12,
-                height: isMobile ? size.width * .3 : size.width * .12,
+                width: isMobile ? size.width * .3 : size.width * .15,
+                height: isMobile ? size.width * .3 : size.width * .15,
                 fit: BoxFit.cover,
               ),
             ),
