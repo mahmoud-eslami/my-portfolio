@@ -13,54 +13,57 @@ class WhatIDoSection extends StatelessWidget {
       fontSize: Constants.mobileTitleSize,
       color: Colors.black,
     );
-    return Column(
-      children: [
-        SizedBox(
-          height: 80,
-          child: Stack(
-            children: [
-              Center(
-                child: Text(
-                  "What i do ?",
-                  style: style,
+    return Container(
+      color: Colors.white,
+      child: Column(
+        children: [
+          SizedBox(
+            height: 80,
+            child: Stack(
+              children: [
+                Center(
+                  child: Text(
+                    "What i do ?",
+                    style: style,
+                  ),
                 ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Image.asset(
+                    "images/hda10.png",
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+          Wrap(
+            alignment: WrapAlignment.center,
+            children: const [
+              WhatIDoItem(
+                iconPath: "images/quality_icon.png",
+                description: Constants.qualityExpDescription,
               ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Image.asset(
-                  "images/hda10.png",
-                ),
+              WhatIDoItem(
+                iconPath: "images/experience_icon.png",
+                description: Constants.experienceDescription,
+              ),
+              WhatIDoItem(
+                iconPath: "images/agile_icon.png",
+                description: Constants.agileExpDescription,
+              ),
+              WhatIDoItem(
+                iconPath: "images/git_icon.png",
+                description: Constants.openSourceExpDescription,
+              ),
+              WhatIDoItem(
+                iconPath: "images/other_skills_icon.png",
+                description: Constants.otherExpDescription,
               ),
             ],
           ),
-        ),
-        const SizedBox(height: 20),
-        Wrap(
-          alignment: WrapAlignment.center,
-          children: const [
-            WhatIDoItem(
-              iconPath: "images/quality_icon.png",
-              description: Constants.qualityExpDescription,
-            ),
-            WhatIDoItem(
-              iconPath: "images/experience_icon.png",
-              description: Constants.experienceDescription,
-            ),
-            WhatIDoItem(
-              iconPath: "images/agile_icon.png",
-              description: Constants.agileExpDescription,
-            ),
-            WhatIDoItem(
-              iconPath: "images/git_icon.png",
-              description: Constants.openSourceExpDescription,
-            ),
-            WhatIDoItem(
-              iconPath: "images/other_skills_icon.png",
-              description: Constants.otherExpDescription,
-            ),
-          ],
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

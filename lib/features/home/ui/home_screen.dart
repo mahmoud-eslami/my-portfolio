@@ -34,32 +34,35 @@ class DesktopSize extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * .2),
-            child: Column(
-              children: const [
-                SizedBox(
-                  height: spacer,
-                ),
-                Center(
-                  child: NameLogo(),
-                ),
-                SizedBox(
-                  height: spacer,
-                ),
-                ProfileSection(),
-                SizedBox(
-                  height: spacer,
-                ),
-                TitleSection(),
-                SizedBox(
-                  height: spacer,
-                ),
-                ButtonsSection(),
-                SizedBox(
-                  height: 20,
-                ),
-              ],
+          Container(
+            color: Constants.creamColor,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: size.width * .2),
+              child: Column(
+                children: const [
+                  SizedBox(
+                    height: spacer,
+                  ),
+                  Center(
+                    child: NameLogo(),
+                  ),
+                  SizedBox(
+                    height: spacer,
+                  ),
+                  ProfileSection(),
+                  SizedBox(
+                    height: spacer,
+                  ),
+                  TitleSection(),
+                  SizedBox(
+                    height: spacer,
+                  ),
+                  ButtonsSection(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                ],
+              ),
             ),
           ),
           const SocialSection(),
@@ -69,9 +72,6 @@ class DesktopSize extends StatelessWidget {
           ),
           const ProjectsSection(),
           const SkillsSection(),
-          const SizedBox(
-            height: spacer,
-          ),
           const FooterSection(),
           const CopyRightSection(),
         ],
@@ -89,34 +89,37 @@ class MobileSize extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: Constants.mobileHorizontalPadding),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
-                SizedBox(
-                  height: spacer,
-                ),
-                Center(
-                  child: NameLogo(),
-                ),
-                SizedBox(
-                  height: spacer,
-                ),
-                ProfileSection(),
-                SizedBox(
-                  height: spacer,
-                ),
-                TitleSection(),
-                SizedBox(
-                  height: spacer + 10,
-                ),
-                ButtonsSection(),
-                SizedBox(
-                  height: 25,
-                ),
-              ],
+          Container(
+            color: Constants.creamColor,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: Constants.mobileHorizontalPadding),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: const [
+                  SizedBox(
+                    height: spacer,
+                  ),
+                  Center(
+                    child: NameLogo(),
+                  ),
+                  SizedBox(
+                    height: spacer,
+                  ),
+                  ProfileSection(),
+                  SizedBox(
+                    height: spacer,
+                  ),
+                  TitleSection(),
+                  SizedBox(
+                    height: spacer + 10,
+                  ),
+                  ButtonsSection(),
+                  SizedBox(
+                    height: 25,
+                  ),
+                ],
+              ),
             ),
           ),
           const SocialSection(),
@@ -126,9 +129,6 @@ class MobileSize extends StatelessWidget {
           ),
           const ProjectsSection(),
           const SkillsSection(),
-          const SizedBox(
-            height: spacer,
-          ),
           const FooterSection(),
           const CopyRightSection(),
         ],

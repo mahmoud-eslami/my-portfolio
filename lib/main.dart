@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio/core/constants/constants.dart';
 
 import 'features/home/ui/home_screen.dart';
 
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.orange,
             fontFamily: "dosis",
-            scaffoldBackgroundColor: Constants.creamColor,
+            scaffoldBackgroundColor: Colors.white,
           ),
           home: const SelectionArea(
             child: HomeScreen(),

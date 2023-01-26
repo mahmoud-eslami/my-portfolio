@@ -8,6 +8,9 @@ class CurvedPainter extends CustomPainter {
     var paint = Paint()
       ..color = Constants.creamColor
       ..strokeWidth = 15;
+    var whitePaint = Paint()
+      ..color = Colors.white
+      ..strokeWidth = 15;
 
     var downerPath = Path();
     var upperPath = Path();
@@ -48,7 +51,7 @@ class CurvedPainter extends CustomPainter {
     upperPath.lineTo(size.width, 0);
     upperPath.lineTo(0, 0);
 
-    canvas.drawPath(downerPath, paint);
+    canvas.drawPath(downerPath, whitePaint);
     canvas.drawPath(upperPath, paint);
   }
 

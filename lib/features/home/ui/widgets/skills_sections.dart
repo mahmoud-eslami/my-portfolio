@@ -8,7 +8,12 @@ class SkillsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _builder(context);
+    var size = MediaQuery.of(context).size;
+
+    return Container(
+        width: size.width,
+        color: Constants.creamColor,
+        child: _builder(context));
   }
 
   _builder(BuildContext context) {
@@ -83,6 +88,9 @@ class SkillsSection extends StatelessWidget {
             ),
           ],
         ),
+        const SizedBox(
+          height: 30,
+        ),
       ],
     );
   }
@@ -94,7 +102,7 @@ class SkillsSection extends StatelessWidget {
     return Container(
       width: size.width * (isMobile ? .5 : .2),
       height: 3,
-      color: Constants.orangeColor,
+      color: Constants.greenColor,
     );
   }
 
@@ -325,7 +333,7 @@ class SkillItem extends StatelessWidget {
         decoration: BoxDecoration(
           color: (imagePath != null) ? Colors.black : Colors.transparent,
           border: Border.all(
-            color: (imagePath != null) ? Colors.black : Constants.orangeColor,
+            color: (imagePath != null) ? Colors.black : Constants.greenColor,
             width: 3,
           ),
           borderRadius: BorderRadius.circular(10),
