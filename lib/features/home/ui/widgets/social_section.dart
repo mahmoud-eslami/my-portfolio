@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/core/constants/constants.dart';
+import 'package:flutter_portfolio/core/utils/assets_path_generator.dart';
 import 'package:flutter_portfolio/core/utils/url_launcher.dart';
 import 'package:flutter_portfolio/features/home/ui/widgets/curved_painter.dart';
 
@@ -71,7 +72,7 @@ class Socials extends StatelessWidget {
                 launchTheUrl(Constants.githubUrl);
               },
               child: Image.asset(
-                "images/github_logo.png",
+                assetsPathGenerator("images/github_logo.png"),
                 height: iconSize,
                 width: iconSize,
               ),
@@ -84,7 +85,7 @@ class Socials extends StatelessWidget {
                 launchTheUrl(Constants.stackUrl);
               },
               child: Image.asset(
-                "images/stack_logo.png",
+                assetsPathGenerator("images/stack_logo.png"),
                 height: iconSize,
                 width: iconSize,
               ),
@@ -97,7 +98,7 @@ class Socials extends StatelessWidget {
                 launchTheUrl(Constants.linkedinUrl);
               },
               child: Image.asset(
-                "images/linkedin_logo.png",
+                assetsPathGenerator("images/linkedin_logo.png"),
                 height: iconSize,
                 width: iconSize,
               ),
