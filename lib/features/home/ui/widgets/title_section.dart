@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/core/constants/constants.dart';
+import 'package:flutter_portfolio/core/utils/assets_path_generator.dart';
 
 import '../../../../core/utils/size_checker.dart';
 
@@ -30,7 +31,7 @@ class TitleSection extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         Image.asset(
-          "images/flutter_logo.png",
+          assetsPathGenerator("images/flutter_logo.png"),
           width: isMobile ? size.width * .1 : 90,
         ),
         Text(
