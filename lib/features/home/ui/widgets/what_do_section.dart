@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/core/utils/assets_path_generator.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/utils/size_checker.dart';
@@ -30,7 +31,7 @@ class WhatIDoSection extends StatelessWidget {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Image.asset(
-                    "images/hda10.png",
+                    assetsPathGenerator("images/hda10.png"),
                   ),
                 ),
               ],
@@ -39,25 +40,25 @@ class WhatIDoSection extends StatelessWidget {
           const SizedBox(height: 20),
           Wrap(
             alignment: WrapAlignment.center,
-            children: const [
+            children: [
               WhatIDoItem(
-                iconPath: "images/quality_icon.png",
+                iconPath: assetsPathGenerator("images/quality_icon.png"),
                 description: Constants.qualityExpDescription,
               ),
               WhatIDoItem(
-                iconPath: "images/experience_icon.png",
+                iconPath: assetsPathGenerator("images/experience_icon.png"),
                 description: Constants.experienceDescription,
               ),
               WhatIDoItem(
-                iconPath: "images/agile_icon.png",
+                iconPath: assetsPathGenerator("images/agile_icon.png"),
                 description: Constants.agileExpDescription,
               ),
               WhatIDoItem(
-                iconPath: "images/git_icon.png",
+                iconPath: assetsPathGenerator("images/git_icon.png"),
                 description: Constants.openSourceExpDescription,
               ),
               WhatIDoItem(
-                iconPath: "images/other_skills_icon.png",
+                iconPath: assetsPathGenerator("images/other_skills_icon.png"),
                 description: Constants.otherExpDescription,
               ),
             ],

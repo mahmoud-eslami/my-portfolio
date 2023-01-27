@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/core/utils/assets_path_generator.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/utils/size_checker.dart';
@@ -17,6 +18,7 @@ class ProjectsSection extends StatelessWidget {
 
     var outerBoxSize = 730.0;
     const spacer = 50.0;
+    print(assetsPathGenerator("images/abs_logo.png"));
     return SizedBox(
       height: outerBoxSize,
       child: Stack(
@@ -37,8 +39,8 @@ class ProjectsSection extends StatelessWidget {
                     style: style,
                   ),
                   const SizedBox(height: spacer),
-                  const ProjectItem(
-                    imagePath: "images/project1.png",
+                  ProjectItem(
+                    imagePath: assetsPathGenerator("images/project1.png"),
                     title: "Amastas",
                     description:
                         "Not just a furnished apartment: a home Not just a furnished apartment: a home Not just a furnished apartment: a homeNot just a furnished apartment: a home",
@@ -54,7 +56,7 @@ class ProjectsSection extends StatelessWidget {
             child: Align(
               alignment: Alignment.topRight,
               child: Image.asset(
-                "images/abs_logo.png",
+                assetsPathGenerator("images/abs_logo.png"),
                 width: 150,
               ),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/core/utils/assets_path_generator.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/utils/size_checker.dart';
@@ -132,14 +133,14 @@ class SkillsSection extends StatelessWidget {
         ),
         Wrap(
           direction: Axis.horizontal,
-          children: const [
+          children:  [
             SkillItem(
               title: "Flutter",
-              imagePath: "images/fl_logo.png",
+              imagePath: assetsPathGenerator("images/fl_logo.png"),
             ),
             SkillItem(
               title: "Dart",
-              imagePath: "images/dart_logo.png",
+              imagePath: assetsPathGenerator("images/dart_logo.png"),
             ),
             SkillItem(
               title: "BloC Pattern",
@@ -189,13 +190,13 @@ class SkillsSection extends StatelessWidget {
         ),
         Wrap(
           direction: Axis.horizontal,
-          children: const [
+          children:  [
             SkillItem(
               title: "OOP",
             ),
             SkillItem(
               title: "Git",
-              imagePath: "images/git_logo.png",
+              imagePath: assetsPathGenerator("images/git_logo.png"),
             ),
             SkillItem(
               title: "CI/CD",
@@ -238,21 +239,21 @@ class SkillsSection extends StatelessWidget {
         ),
         Wrap(
           direction: Axis.horizontal,
-          children: const [
+          children:  [
             SkillItem(
               title: "Figma",
-              imagePath: "images/figma_logo.png",
+              imagePath: assetsPathGenerator("images/figma_logo.png"),
             ),
             SkillItem(
               title: "Adobe XD",
-              imagePath: "images/adobe_xd_logo.png",
+              imagePath: assetsPathGenerator("images/adobe_xd_logo.png"),
             ),
             SkillItem(
               title: "Cupertino",
             ),
             SkillItem(
               title: "Material design",
-              imagePath: "images/material_logo.png",
+              imagePath: assetsPathGenerator("images/material_logo.png"),
               isLong: true,
             ),
           ],
@@ -287,18 +288,18 @@ class SkillsSection extends StatelessWidget {
         ),
         Wrap(
           direction: Axis.horizontal,
-          children: const [
+          children:  [
             SkillItem(
               title: "Python",
-              imagePath: "images/python_lang_logo.png",
+              imagePath: assetsPathGenerator("images/python_lang_logo.png"),
             ),
             SkillItem(
               title: "Django",
-              imagePath: "images/django_logo.png",
+              imagePath: assetsPathGenerator("images/django_logo.png"),
             ),
             SkillItem(
               title: "Java",
-              imagePath: "images/java_lang_logo.png",
+              imagePath: assetsPathGenerator("images/java_lang_logo.png"),
             ),
           ],
         ),
