@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/core/utils/assets_path_generator.dart';
 
@@ -15,10 +16,11 @@ class ProjectsSection extends StatelessWidget {
       fontSize: Constants.mobileTitleSize,
       color: Constants.creamColor,
     );
+    bool isMobile = SizeChecker.isMobile(context);
+    bool isTablet = size.width > 600 && size.width < 900;
 
     var outerBoxSize = 730.0;
     const spacer = 50.0;
-    print(assetsPathGenerator("images/abs_logo.png"));
     return SizedBox(
       height: outerBoxSize,
       child: Stack(
@@ -39,11 +41,29 @@ class ProjectsSection extends StatelessWidget {
                     style: style,
                   ),
                   const SizedBox(height: spacer),
-                  ProjectItem(
-                    imagePath: assetsPathGenerator("images/project1.png"),
-                    title: "Amastas",
-                    description:
-                        "Not just a furnished apartment: a home Not just a furnished apartment: a home Not just a furnished apartment: a homeNot just a furnished apartment: a home",
+                  CarouselSlider(
+                    options: CarouselOptions(
+                      height: 450.0,
+                      disableCenter: true,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      autoPlay: true,
+                      viewportFraction: isMobile
+                          ? .9
+                          : isTablet
+                              ? .7
+                              : .5,
+                    ),
+                    items: [1, 2, 3, 4, 5].map((i) {
+                      return Flexible(
+                        child: ProjectItem(
+                          imagePath: assetsPathGenerator("images/project1.png"),
+                          title: "Amastas",
+                          description: """Not just a furnished apartment:
+                                    a home Not just a furnished apartment: a home Not just
+                                    a furnished apartment: a homeNot just a furnished apartment: a home""",
+                        ),
+                      );
+                    }).toList(),
                   ),
                 ],
               ),
@@ -103,86 +123,90 @@ class _ProjectItemState extends State<ProjectItem> {
         isHover = false;
         setState(() {});
       },
-      child: Container(
-        width: isMobile ? size.width * .9 : 450,
-        height: 450,
-        decoration: BoxDecoration(
-          color: Constants.creamColor.withOpacity(.2),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Column(
-          children: [
-            Material(
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              borderRadius: const BorderRadius.vertical(
-                top: Radius.circular(10),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Container(
+          width: isMobile ? size.width * .9 : 450,
+          height: 450,
+          decoration: BoxDecoration(
+            color: Constants.creamColor.withOpacity(.2),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Column(
+            children: [
+              Material(
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(10),
+                ),
+                child: Image.asset(
+                  widget.imagePath,
+                  height: 330,
+                  width: size.width * .9,
+                  fit: BoxFit.cover,
+                ),
               ),
-              child: Image.asset(
-                widget.imagePath,
-                height: 330,
-                width: size.width * .9,
-                fit: BoxFit.cover,
-              ),
-            ),
-            const Expanded(
-                child: SizedBox(
-              height: 1,
-            )),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.title,
-                          style: style.copyWith(
-                              color: isHover
-                                  ? Constants.orangeColor
-                                  : Constants.creamColor),
-                        ),
-                        AnimatedContainer(
-                          duration: const Duration(milliseconds: 600),
-                          width: isHover ? 150 : 0,
-                          height: 3,
-                          color: isHover
-                              ? Constants.orangeColor
-                              : Colors.transparent,
-                        ),
-                        const SizedBox(
-                          height: 4,
-                        ),
-                        Text(
-                          widget.description,
-                          style: style.copyWith(
-                            fontSize: 12,
-                            fontWeight: FontWeight.normal,
+              const Expanded(
+                  child: SizedBox(
+                height: 1,
+              )),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.title,
+                            style: style.copyWith(
+                                color: isHover
+                                    ? Constants.orangeColor
+                                    : Constants.creamColor),
                           ),
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                          AnimatedContainer(
+                            duration: const Duration(milliseconds: 600),
+                            width: isHover ? 150 : 0,
+                            height: 3,
+                            color: isHover
+                                ? Constants.orangeColor
+                                : Colors.transparent,
+                          ),
+                          const SizedBox(
+                            height: 4,
+                          ),
+                          Text(
+                            widget.description,
+                            style: style.copyWith(
+                              fontSize: 12,
+                              fontWeight: FontWeight.normal,
+                            ),
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Icon(
-                    Icons.arrow_forward,
-                    color:
-                        isHover ? Constants.orangeColor : Constants.creamColor,
-                    size: 60,
-                  )
-                ],
+                    Icon(
+                      Icons.arrow_forward,
+                      color: isHover
+                          ? Constants.orangeColor
+                          : Constants.creamColor,
+                      size: 60,
+                    )
+                  ],
+                ),
               ),
-            ),
-            const Expanded(
-                child: SizedBox(
-              height: 1,
-            )),
-          ],
+              const Expanded(
+                  child: SizedBox(
+                height: 1,
+              )),
+            ],
+          ),
         ),
       ),
     );
