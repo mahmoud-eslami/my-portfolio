@@ -101,7 +101,7 @@ class SkillsSection extends StatelessWidget {
     var size = MediaQuery.of(context).size;
 
     return Container(
-      width: size.width * (isMobile ? .5 : .2),
+      width: size.width * (isMobile ? .6 : .30),
       height: 3,
       color: Constants.greenColor,
     );
@@ -113,54 +113,59 @@ class SkillsSection extends StatelessWidget {
       fontSize: Constants.mobileTitleSize,
       color: Colors.black,
     );
+    var size = MediaQuery.of(context).size;
+    bool isMobile = SizeChecker.isMobile(context);
 
-    return Column(
-      children: [
-        Column(
-          children: [
-            Text(
-              "Main Skills",
-              style: style,
-            ),
-            const SizedBox(
-              height: 4,
-            ),
-            lineSplitter(context),
-          ],
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        Wrap(
-          direction: Axis.horizontal,
-          children:  [
-            SkillItem(
-              title: "Flutter",
-              imagePath: assetsPathGenerator("images/fl_logo.png"),
-            ),
-            SkillItem(
-              title: "Dart",
-              imagePath: assetsPathGenerator("images/dart_logo.png"),
-            ),
-            SkillItem(
-              title: "BloC Pattern",
-            ),
-            SkillItem(
-              title: "Dio & Http",
-            ),
-            SkillItem(
-              title: "I18n & l10n",
-            ),
-            SkillItem(
-              title: "Animations",
-            ),
-            SkillItem(
-              title: "Asynchronous programming",
-              isLong: true,
-            ),
-          ],
-        ),
-      ],
+    return SizedBox(
+      width: size.width * (isMobile ? .6 : .35),
+      child: Column(
+        children: [
+          Column(
+            children: [
+              Text(
+                "Main Skills",
+                style: style,
+              ),
+              const SizedBox(
+                height: 4,
+              ),
+              lineSplitter(context),
+            ],
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Wrap(
+            direction: Axis.horizontal,
+            children: [
+              SkillItem(
+                title: "Flutter",
+                imagePath: assetsPathGenerator("images/fl_logo.png"),
+              ),
+              SkillItem(
+                title: "Dart",
+                imagePath: assetsPathGenerator("images/dart_logo.png"),
+              ),
+              const SkillItem(
+                title: "BloC Pattern",
+              ),
+              const SkillItem(
+                title: "Dio & Http",
+              ),
+              const SkillItem(
+                title: "I18n & l10n",
+              ),
+              const SkillItem(
+                title: "Animations",
+              ),
+              const SkillItem(
+                title: "Asynchronous programming",
+                isLong: true,
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -170,46 +175,50 @@ class SkillsSection extends StatelessWidget {
       fontSize: Constants.mobileTitleSize,
       color: Colors.black,
     );
-
-    return Column(
-      children: [
-        Column(
-          children: [
-            Text(
-              "Software Development Skills",
-              style: style,
-            ),
-            const SizedBox(
-              height: 4,
-            ),
-            lineSplitter(context),
-          ],
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        Wrap(
-          direction: Axis.horizontal,
-          children:  [
-            SkillItem(
-              title: "OOP",
-            ),
-            SkillItem(
-              title: "Git",
-              imagePath: assetsPathGenerator("images/git_logo.png"),
-            ),
-            SkillItem(
-              title: "CI/CD",
-            ),
-            SkillItem(
-              title: "MVVM",
-            ),
-            SkillItem(
-              title: "Github actions",
-            ),
-          ],
-        ),
-      ],
+    bool isMobile = SizeChecker.isMobile(context);
+    var size = MediaQuery.of(context).size;
+    return SizedBox(
+      width: size.width * (isMobile ? .6 : .35),
+      child: Column(
+        children: [
+          Column(
+            children: [
+              Text(
+                "Software Development Skills",
+                style: style,
+              ),
+              const SizedBox(
+                height: 4,
+              ),
+              lineSplitter(context),
+            ],
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Wrap(
+            direction: Axis.horizontal,
+            children: [
+              const SkillItem(
+                title: "OOP",
+              ),
+              SkillItem(
+                title: "Git",
+                imagePath: assetsPathGenerator("images/git_logo.png"),
+              ),
+              const SkillItem(
+                title: "CI/CD",
+              ),
+              const SkillItem(
+                title: "MVVM",
+              ),
+              const SkillItem(
+                title: "Github actions",
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -219,46 +228,51 @@ class SkillsSection extends StatelessWidget {
       fontSize: Constants.mobileTitleSize,
       color: Colors.black,
     );
+    bool isMobile = SizeChecker.isMobile(context);
+    var size = MediaQuery.of(context).size;
 
-    return Column(
-      children: [
-        Column(
-          children: [
-            Text(
-              "Design Skills",
-              style: style,
-            ),
-            const SizedBox(
-              height: 4,
-            ),
-            lineSplitter(context),
-          ],
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        Wrap(
-          direction: Axis.horizontal,
-          children:  [
-            SkillItem(
-              title: "Figma",
-              imagePath: assetsPathGenerator("images/figma_logo.png"),
-            ),
-            SkillItem(
-              title: "Adobe XD",
-              imagePath: assetsPathGenerator("images/adobe_xd_logo.png"),
-            ),
-            SkillItem(
-              title: "Cupertino",
-            ),
-            SkillItem(
-              title: "Material design",
-              imagePath: assetsPathGenerator("images/material_logo.png"),
-              isLong: true,
-            ),
-          ],
-        ),
-      ],
+    return SizedBox(
+      width: size.width * (isMobile ? .6 : .30),
+      child: Column(
+        children: [
+          Column(
+            children: [
+              Text(
+                "Design Skills",
+                style: style,
+              ),
+              const SizedBox(
+                height: 4,
+              ),
+              lineSplitter(context),
+            ],
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Wrap(
+            direction: Axis.horizontal,
+            children: [
+              SkillItem(
+                title: "Figma",
+                imagePath: assetsPathGenerator("images/figma_logo.png"),
+              ),
+              SkillItem(
+                title: "Adobe XD",
+                imagePath: assetsPathGenerator("images/adobe_xd_logo.png"),
+              ),
+              const SkillItem(
+                title: "Cupertino",
+              ),
+              SkillItem(
+                title: "Material design",
+                imagePath: assetsPathGenerator("images/material_logo.png"),
+                isLong: true,
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -268,42 +282,46 @@ class SkillsSection extends StatelessWidget {
       fontSize: Constants.mobileTitleSize,
       color: Colors.black,
     );
+    bool isMobile = SizeChecker.isMobile(context);
     var size = MediaQuery.of(context).size;
-    return Column(
-      children: [
-        Column(
-          children: [
-            Text(
-              "Familiar with",
-              style: style,
-            ),
-            const SizedBox(
-              height: 4,
-            ),
-            lineSplitter(context),
-          ],
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        Wrap(
-          direction: Axis.horizontal,
-          children:  [
-            SkillItem(
-              title: "Python",
-              imagePath: assetsPathGenerator("images/python_lang_logo.png"),
-            ),
-            SkillItem(
-              title: "Django",
-              imagePath: assetsPathGenerator("images/django_logo.png"),
-            ),
-            SkillItem(
-              title: "Java",
-              imagePath: assetsPathGenerator("images/java_lang_logo.png"),
-            ),
-          ],
-        ),
-      ],
+    return SizedBox(
+      width: size.width * (isMobile ? .6 : .30),
+      child: Column(
+        children: [
+          Column(
+            children: [
+              Text(
+                "Familiar with",
+                style: style,
+              ),
+              const SizedBox(
+                height: 4,
+              ),
+              lineSplitter(context),
+            ],
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Wrap(
+            direction: Axis.horizontal,
+            children: [
+              SkillItem(
+                title: "Python",
+                imagePath: assetsPathGenerator("images/python_lang_logo.png"),
+              ),
+              SkillItem(
+                title: "Django",
+                imagePath: assetsPathGenerator("images/django_logo.png"),
+              ),
+              SkillItem(
+                title: "Java",
+                imagePath: assetsPathGenerator("images/java_lang_logo.png"),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

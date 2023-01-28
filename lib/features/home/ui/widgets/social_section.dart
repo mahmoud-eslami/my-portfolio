@@ -2,44 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/core/constants/constants.dart';
 import 'package:flutter_portfolio/core/utils/assets_path_generator.dart';
 import 'package:flutter_portfolio/core/utils/url_launcher.dart';
-import 'package:flutter_portfolio/features/home/ui/widgets/curved_painter.dart';
 
 class SocialSection extends StatelessWidget {
   const SocialSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Column(
-          children: [
-            Container(
-              color: Colors.transparent,
-              width: MediaQuery.of(context).size.width * 100,
-              height: 10,
-            ),
-            Container(
-              color: Colors.black,
-              width: MediaQuery.of(context).size.width * 100,
-              height: 280,
-            ),
-            Container(
-              color: Colors.transparent,
-              width: MediaQuery.of(context).size.width * 100,
-              height: 10,
-            ),
-          ],
-        ),
-        Container(
-          color: Colors.transparent,
-          width: MediaQuery.of(context).size.width * 100,
-          height: 300,
-          child: CustomPaint(
-            painter: CurvedPainter(),
-            child: const Socials(),
-          ),
-        ),
-      ],
+    return Container(
+      color: Colors.black,
+      width: MediaQuery.of(context).size.width * 100,
+      height: 250,
+      child: const Socials(),
     );
   }
 }
