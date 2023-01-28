@@ -59,13 +59,16 @@ class DesktopSize extends StatelessWidget {
                   ),
                   ButtonsSection(),
                   SizedBox(
-                    height: 20,
+                    height: spacer + 30,
                   ),
                 ],
               ),
             ),
           ),
           const SocialSection(),
+          const SizedBox(
+            height: spacer,
+          ),
           const WhatIDoSection(),
           const SizedBox(
             height: spacer + 10,
@@ -116,13 +119,16 @@ class MobileSize extends StatelessWidget {
                   ),
                   ButtonsSection(),
                   SizedBox(
-                    height: 25,
+                    height: spacer + 25,
                   ),
                 ],
               ),
             ),
           ),
           const SocialSection(),
+          const SizedBox(
+            height: spacer,
+          ),
           const WhatIDoSection(),
           const SizedBox(
             height: spacer + 10,
