@@ -54,14 +54,12 @@ class ProjectsSection extends StatelessWidget {
                               : .5,
                     ),
                     items: [1, 2, 3, 4, 5].map((i) {
-                      return Flexible(
-                        child: ProjectItem(
-                          imagePath: assetsPathGenerator("images/project1.png"),
-                          title: "Amastas",
-                          description: """Not just a furnished apartment:
-                                    a home Not just a furnished apartment: a home Not just
-                                    a furnished apartment: a homeNot just a furnished apartment: a home""",
-                        ),
+                      return ProjectItem(
+                        imagePath: assetsPathGenerator("images/project1.png"),
+                        title: "Amastas",
+                        description: """Not just a furnished apartment:
+                                  a home Not just a furnished apartment: a home Not just
+                                  a furnished apartment: a homeNot just a furnished apartment: a home""",
                       );
                     }).toList(),
                   ),
