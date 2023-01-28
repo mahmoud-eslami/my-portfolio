@@ -39,6 +39,7 @@ dependencies:
   equatable: ^2.0.5
   flutter_svg: ^1.1.6
   url_launcher: ^6.1.8
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
