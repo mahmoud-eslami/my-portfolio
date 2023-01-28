@@ -14,7 +14,7 @@ class Constants {
       "https://stackoverflow.com/users/12496048/mahmoud-eslami";
 
   static const openSourceExpDescription =
-      "I am passionate about open-source projects and enjoy collaborating with the community to share my knowledge and skills.";
+      "I am passionate about open-source projects and enjoy collaborating with the community.";
   static const experienceDescription =
       "3+ years of experience as a Flutter developer and continuously working on improving skills and knowledge.";
   static const agileExpDescription =
