@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/constants/constants.dart';
 import '../../../../core/global_widgets/custom_button.dart';
 import '../../../../core/utils/size_checker.dart';
+import '../../../../core/utils/url_launcher.dart';
 
 class FooterSection extends StatelessWidget {
   const FooterSection({super.key});
@@ -43,7 +44,9 @@ class FooterSection extends StatelessWidget {
           const SizedBox(height: 20),
           CustomButton(
             title: "Talk to me",
-            onPressed: () {},
+            onPressed: () {
+              launchTheUrl(Constants.emailUrl);
+            },
             width: isMobile ? size.width * .6 : Constants.desktopButtonWidth,
             height: 60,
           ),

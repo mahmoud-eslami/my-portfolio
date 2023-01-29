@@ -23,13 +23,17 @@ class ButtonsSection extends StatelessWidget {
           children: [
             CustomButton(
               title: "Download CV",
-              onPressed: () {},
+              onPressed: () {
+                launchTheUrl(Constants.resumeUrl);
+              },
               width: size.width * .4,
               height: Constants.mobileBtnHeight,
             ),
             CustomButton(
               title: "Hire me!",
-              onPressed: () {},
+              onPressed: () {
+                launchTheUrl(Constants.emailUrl);
+              },
               width: size.width * .4,
               height: Constants.mobileBtnHeight,
             ),
