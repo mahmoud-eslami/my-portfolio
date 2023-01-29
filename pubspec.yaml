@@ -40,6 +40,8 @@ dependencies:
   flutter_svg: ^1.1.6
   url_launcher: ^6.1.8
   carousel_slider: ^4.2.1
+  get_it: ^7.2.0
+  extended_image: ^6.3.4
 
 dev_dependencies:
   flutter_test:

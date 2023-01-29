@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/di.dart';
 
 import 'features/home/ui/home_screen.dart';
 
-void main() {
+void main() async {
+  await DependencyInjection.initializer();
   runApp(const MyApp());
 }
 

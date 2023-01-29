@@ -7,3 +7,22 @@ class HomeInitial extends HomeState {
   @override
   List<Object?> get props => [];
 }
+
+class FetchHomeDataSuccess extends HomeState {
+  final HomeModel homeData;
+
+  FetchHomeDataSuccess(this.homeData);
+
+  @override
+  List<Object?> get props => [homeData];
+}
+
+class FetchHomeDataFailure extends HomeState {
+  @override
+  List<Object?> get props => [];
+}
+
+class FetchHomeDataLoading extends HomeState {
+  @override
+  List<Object?> get props => [];
+}
