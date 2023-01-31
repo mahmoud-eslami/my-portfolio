@@ -55,22 +55,26 @@ class ProjectsSection extends StatelessWidget {
                             disableCenter: true,
                             clipBehavior: Clip.antiAliasWithSaveLayer,
                             autoPlay: true,
+                            padEnds: false,
+                            enlargeCenterPage: isTablet || isMobile,
                             viewportFraction: isMobile
                                 ? .9
                                 : isTablet
                                     ? .7
                                     : .5,
                           ),
-                          items: state.homeData.projects!.map((i) {
-                            return ProjectItem(
-                              imagePath: state.homeData.projects![1].banner,
-                              title: state.homeData.projects![1].title ??
-                                  "Unkowne",
-                              description:
-                                  state.homeData.projects![1].description ??
-                                      "Unkowne",
-                            );
-                          }).toList(),
+                          items: List.generate(
+                              state.homeData.projects!.length,
+                              (index) => ProjectItem(
+                                    imagePath:
+                                        state.homeData.projects![index].banner,
+                                    title:
+                                        state.homeData.projects![index].title ??
+                                            "Unkowne",
+                                    description: state.homeData.projects![index]
+                                            .description ??
+                                        "Unkowne",
+                                  )).toList(),
                         );
                       }
                       if (state is FetchHomeDataFailure) {
@@ -178,8 +182,6 @@ class _ProjectItemState extends State<ProjectItem> {
                   width: size.width * .9,
                   fit: BoxFit.cover,
                   cache: true,
-                  border: Border.all(color: Colors.red, width: 1.0),
-                  //cancelToken: cancellationToken,
                 ),
               ),
               const Expanded(

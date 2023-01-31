@@ -11,12 +11,18 @@ class ProfileSection extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     bool isMobile = SizeChecker.isMobile(context);
+    bool isTablet = size.width > 600 && size.width < 900;
+
     return AnimationBuilder(
       child: Stack(
         children: [
           Positioned(
-            top: isMobile ? 20 : 0,
-            left: size.width * .12,
+            top: isMobile
+                ? 20
+                : isTablet
+                    ? 23
+                    : 0,
+            left: size.width * (isTablet ? .10 : .12),
             child: Image.asset(
               assetsPathGenerator("images/hda5.png"),
               width: size.width * (isMobile ? 0.15 : 0.08),
@@ -35,8 +41,18 @@ class ProfileSection extends StatelessWidget {
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 child: Image.asset(
                   assetsPathGenerator("images/profile.jpg"),
-                  width: isMobile ? size.width * .3 : size.width * .15,
-                  height: isMobile ? size.width * .3 : size.width * .15,
+                  width: size.width *
+                      (isMobile
+                          ? .3
+                          : isTablet
+                              ? .23
+                              : .15),
+                  height: size.width *
+                      (isMobile
+                          ? .3
+                          : isTablet
+                              ? .23
+                              : .15),
                   fit: BoxFit.cover,
                 ),
               ),
