@@ -7,6 +7,7 @@ import 'package:flutter_portfolio/core/utils/assets_path_generator.dart';
 import 'package:flutter_portfolio/features/home/bloc/bloc/home_bloc.dart';
 
 import '../../../../core/constants/constants.dart';
+import '../../../../core/global_widgets/custom_mouse_region.dart';
 import '../../../../core/utils/size_checker.dart';
 
 class ProjectsSection extends StatelessWidget {
@@ -151,7 +152,8 @@ class _ProjectItemState extends State<ProjectItem> {
     );
     bool isMobile = SizeChecker.isMobile(context);
 
-    return MouseRegion(
+    return CustomMouseRegion(
+      cursor: SystemMouseCursors.click,
       onEnter: (event) {
         isHover = true;
         setState(() {});
