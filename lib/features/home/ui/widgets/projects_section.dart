@@ -53,16 +53,15 @@ class ProjectsSection extends StatelessWidget {
                         return CarouselSlider(
                           options: CarouselOptions(
                             height: 450.0,
-                            disableCenter: true,
+                            disableCenter: !isMobile,
                             clipBehavior: Clip.antiAliasWithSaveLayer,
                             autoPlay: true,
                             padEnds: false,
-                            enlargeCenterPage: isTablet || isMobile,
                             viewportFraction: isMobile
-                                ? .9
+                                ? 1
                                 : isTablet
                                     ? .7
-                                    : .5,
+                                    : .4,
                           ),
                           items: List.generate(
                               state.homeData.projects!.length,
