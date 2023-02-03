@@ -67,13 +67,17 @@ class Skills {
 
 class SkillItems {
   String? title;
+  bool? long;
   String? image;
 
-  SkillItems({this.title, this.image});
+  SkillItems({this.title, this.long, this.image});
 
   SkillItems.fromJson(Map<String, dynamic> json) {
     if (json["title"] is String) {
       title = json["title"];
+    }
+    if (json["long"] is bool) {
+      long = json["long"];
     }
     if (json["image"] is String) {
       image = json["image"];
@@ -83,6 +87,7 @@ class SkillItems {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> _data = <String, dynamic>{};
     _data["title"] = title;
+    _data["long"] = long;
     _data["image"] = image;
     return _data;
   }
@@ -92,7 +97,7 @@ class Projects {
   String? title;
   String? description;
   String? banner;
-  List<dynamic>? images;
+  List<String>? images;
 
   Projects({this.title, this.description, this.banner, this.images});
 
@@ -107,7 +112,8 @@ class Projects {
       banner = json["banner"];
     }
     if (json["images"] is List) {
-      images = json["images"] ?? [];
+      images =
+          json["images"] == null ? null : List<String>.from(json["images"]);
     }
   }
 
