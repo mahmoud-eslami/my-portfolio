@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/di.dart';
 
 import 'features/home/ui/home_screen.dart';
 
-void main() {
+void main() async {
+  await DependencyInjection.initializer();
   runApp(const MyApp());
 }
 
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
       return LayoutBuilder(builder: (context, constraints) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Mahmoud.dev',
+          title: 'Mahmoud Eslami',
           theme: ThemeData(
             primarySwatch: Colors.orange,
             fontFamily: "dosis",

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_portfolio/core/constants/constants.dart';
 import 'package:flutter_portfolio/core/utils/size_checker.dart';
+import 'package:flutter_portfolio/features/home/bloc/bloc/home_bloc.dart';
 import 'package:flutter_portfolio/features/home/ui/widgets/name_logo.dart';
 import 'package:flutter_portfolio/features/home/ui/widgets/skills_sections.dart';
 import 'package:flutter_portfolio/features/home/ui/widgets/social_section.dart';
 
+import '../../../di.dart';
 import 'widgets/buttons_section.dart';
 import 'widgets/footer_section.dart';
 import 'widgets/profile_section.dart';
@@ -17,10 +20,13 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SizeChecker.isMobile(context)
-            ? const MobileSize()
-            : const DesktopSize());
+    return BlocProvider(
+      create: (context) => getIt.get<HomeBloc>()..add(HomeDataFetched()),
+      child: Scaffold(
+          body: SizeChecker.isMobile(context)
+              ? const MobileSize()
+              : const DesktopSize()),
+    );
   }
 }
 

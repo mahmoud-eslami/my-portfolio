@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/core/constants/constants.dart';
 
+import 'custom_mouse_region.dart';
+
 class CustomButton extends StatefulWidget {
   const CustomButton({
     super.key,
@@ -28,9 +30,9 @@ class _CustomButtonState extends State<CustomButton> {
       fontSize: 20,
       color: isHoverd ? Constants.creamColor : Colors.black,
     );
-    return MouseRegion(
+    return CustomMouseRegion(
       cursor: SystemMouseCursors.click,
-      onHover: (event) {
+      onEnter: (event) {
         setState(() {
           isHoverd = true;
         });

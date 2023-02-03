@@ -1,0 +1,30 @@
+{
+  "projects": [
+    {
+      "title": "Pmodoro",
+      "description": "An application that helps users implement the Pomodoro Technique.",
+      "banner": "",
+      "images": [
+        "asdf"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "title": "Main skills",
+      "description": "",
+      "skillItems": [
+        {
+          "title": "Flutter",
+          "long": false,
+          "image": "$/portfolio/fl_logo.png"
+        },
+        {
+          "title": "Flutter",
+          "long": false,
+          "image": null
+        }
+      ]
+    }
+  ]
+}

@@ -36,6 +36,7 @@ class Constants {
   static const mobileBtnHeight = 60.0;
 
   // desktop
+  static const desktopVerticalPadding = 40.0;
   static const desktopButtonWidth = 200.0;
   static const desktopButtonHeight = 70.0;
   static const desktopDescriptionSize = 40.0;

@@ -1,8 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_portfolio/core/global_widgets/custom_button.dart';
 import 'package:flutter_portfolio/core/utils/assets_path_generator.dart';
+import 'package:flutter_portfolio/features/home/bloc/bloc/home_bloc.dart';
 
 import '../../../../core/constants/constants.dart';
+import '../../../../core/global_widgets/custom_mouse_region.dart';
 import '../../../../core/utils/size_checker.dart';
 
 class ProjectsSection extends StatelessWidget {
@@ -41,27 +46,61 @@ class ProjectsSection extends StatelessWidget {
                     style: style,
                   ),
                   const SizedBox(height: spacer),
-                  CarouselSlider(
-                    options: CarouselOptions(
-                      height: 450.0,
-                      disableCenter: true,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      autoPlay: true,
-                      viewportFraction: isMobile
-                          ? .9
-                          : isTablet
-                              ? .7
-                              : .5,
-                    ),
-                    items: [1, 2, 3, 4, 5].map((i) {
-                      return ProjectItem(
-                        imagePath: assetsPathGenerator("images/project1.png"),
-                        title: "Amastas",
-                        description: """Not just a furnished apartment:
-                                  a home Not just a furnished apartment: a home Not just
-                                  a furnished apartment: a homeNot just a furnished apartment: a home""",
+                  BlocBuilder(
+                    bloc: context.read<HomeBloc>(),
+                    builder: (context, state) {
+                      if (state is FetchHomeDataSuccess) {
+                        return CarouselSlider(
+                          options: CarouselOptions(
+                            height: 450.0,
+                            disableCenter: true,
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            autoPlay: true,
+                            padEnds: false,
+                            enlargeCenterPage: isTablet || isMobile,
+                            viewportFraction: isMobile
+                                ? .9
+                                : isTablet
+                                    ? .7
+                                    : .5,
+                          ),
+                          items: List.generate(
+                              state.homeData.projects!.length,
+                              (index) => ProjectItem(
+                                    imagePath:
+                                        state.homeData.projects![index].banner,
+                                    title:
+                                        state.homeData.projects![index].title ??
+                                            "Unkowne",
+                                    description: state.homeData.projects![index]
+                                            .description ??
+                                        "Unkowne",
+                                  )).toList(),
+                        );
+                      }
+                      if (state is FetchHomeDataFailure) {
+                        SizedBox(
+                          height: 450,
+                          width: size.width,
+                          child: Center(
+                            child: CustomButton(
+                              title: "Try again",
+                              onPressed: () {
+                                context.read<HomeBloc>().add(HomeDataFetched());
+                              },
+                            ),
+                          ),
+                        );
+                      }
+
+                      return SizedBox(
+                        height: 450,
+                        width: size.width,
+                        child: const Center(
+                          child: CircularProgressIndicator(),
+                        ),
                       );
-                    }).toList(),
+                    },
                   ),
                 ],
               ),
@@ -88,12 +127,13 @@ class ProjectsSection extends StatelessWidget {
 class ProjectItem extends StatefulWidget {
   const ProjectItem({
     super.key,
-    required this.imagePath,
+    this.imagePath,
     required this.title,
     required this.description,
   });
 
-  final String imagePath, title, description;
+  final String title, description;
+  final String? imagePath;
 
   @override
   State<ProjectItem> createState() => _ProjectItemState();
@@ -112,7 +152,8 @@ class _ProjectItemState extends State<ProjectItem> {
     );
     bool isMobile = SizeChecker.isMobile(context);
 
-    return MouseRegion(
+    return CustomMouseRegion(
+      cursor: SystemMouseCursors.click,
       onEnter: (event) {
         isHover = true;
         setState(() {});
@@ -137,11 +178,12 @@ class _ProjectItemState extends State<ProjectItem> {
                 borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(10),
                 ),
-                child: Image.asset(
-                  widget.imagePath,
+                child: ExtendedImage.network(
+                  widget.imagePath ?? "",
                   height: 330,
                   width: size.width * .9,
                   fit: BoxFit.cover,
+                  cache: true,
                 ),
               ),
               const Expanded(
