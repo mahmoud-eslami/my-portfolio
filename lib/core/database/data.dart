@@ -114,24 +114,14 @@ var dataset = {
       "description": "",
       "skillItems": [
         {
-          "title": "Figma",
-          "long": false,
-          "image": "$baseUrl/portfolio/figma_logo.png",
-        },
-        {
-          "title": "Adobe XD",
-          "long": false,
-          "image": "$baseUrl/portfolio/adobe_xd_logo.png",
+          "title": "Material Design",
+          "long": true,
+          "image": "$baseUrl/portfolio/material_logo.png",
         },
         {
           "title": "Cupertino",
           "long": false,
           "image": null,
-        },
-        {
-          "title": "Material Design",
-          "long": true,
-          "image": "$baseUrl/portfolio/material_logo.png",
         },
       ]
     },
