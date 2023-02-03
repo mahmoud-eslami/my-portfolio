@@ -1,3 +1,4 @@
+const baseUrl = "https://raw.githubusercontent.com/mahmoud-eslami/resume/main";
 var dataset = {
   "projects": [
     {
@@ -34,5 +35,121 @@ var dataset = {
       "banner": "",
       "images": []
     }
-  ]
+  ],
+  "skills": [
+    {
+      "title": "Main skills",
+      "description": "",
+      "skillItems": [
+        {
+          "title": "Flutter",
+          "long": false,
+          "image": "$baseUrl/portfolio/fl_logo.png",
+        },
+        {
+          "title": "Dart",
+          "long": false,
+          "image": "$baseUrl/portfolio/dart_logo.png",
+        },
+        {
+          "title": "BLoC Pattern",
+          "long": false,
+          "image": null,
+        },
+        {
+          "title": "Dio & Http",
+          "long": false,
+          "image": null,
+        },
+        {
+          "title": "i18n & l10n",
+          "long": false,
+          "image": null,
+        },
+        {
+          "title": "Animations",
+          "long": false,
+          "image": null,
+        },
+        {
+          "title": "Asynchronous programming",
+          "long": true,
+          "image": null,
+        },
+      ]
+    },
+    {
+      "title": "Software development skills",
+      "description": "",
+      "skillItems": [
+        {
+          "title": "OOP",
+          "long": false,
+          "image": null,
+        },
+        {
+          "title": "Git",
+          "long": false,
+          "image": "$baseUrl/portfolio/git_logo.png",
+        },
+        {
+          "title": "CI / CD",
+          "long": false,
+          "image": null,
+        },
+        {
+          "title": "MVVM",
+          "long": false,
+          "image": null,
+        },
+        {
+          "title": "Github actions",
+          "long": false,
+          "image": null,
+        },
+      ]
+    },
+    {
+      "title": "Design skills",
+      "description": "",
+      "skillItems": [
+        {
+          "title": "Figma",
+          "long": false,
+          "image": "$baseUrl/portfolio/figma_logo.png",
+        },
+        {
+          "title": "Adobe XD",
+          "long": false,
+          "image": "$baseUrl/portfolio/adobe_xd_logo.png",
+        },
+        {
+          "title": "Cupertino",
+          "long": false,
+          "image": null,
+        },
+        {
+          "title": "Material Design",
+          "long": true,
+          "image": "$baseUrl/portfolio/material_logo.png",
+        },
+      ]
+    },
+    {
+      "title": "Familiar with",
+      "description": "",
+      "skillItems": [
+        {
+          "title": "Python",
+          "long": false,
+          "image": "$baseUrl/portfolio/python_lang_logo.png",
+        },
+        {
+          "title": "Django",
+          "long": false,
+          "image": "$baseUrl/portfolio/django_logo.png",
+        },
+      ]
+    },
+  ],
 };

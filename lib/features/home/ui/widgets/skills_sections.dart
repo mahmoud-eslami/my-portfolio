@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio/core/utils/assets_path_generator.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_portfolio/core/global_widgets/custom_cache_image.dart';
+import 'package:flutter_portfolio/features/home/bloc/bloc/home_bloc.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/utils/size_checker.dart';
+import '../../data/model/home_model.dart';
 
 class SkillsSection extends StatelessWidget {
   const SkillsSection({super.key});
@@ -18,83 +21,12 @@ class SkillsSection extends StatelessWidget {
   }
 
   _builder(BuildContext context) {
-    bool isMobile = SizeChecker.isMobile(context);
-    var size = MediaQuery.of(context).size;
-
-    if (isMobile) {
-      return Column(
-        children: [
-          const SizedBox(
-            height: 30,
-          ),
-          mainSkills(context),
-          const SizedBox(
-            height: 30,
-          ),
-          softwareSkills(context),
-          const SizedBox(
-            height: 30,
-          ),
-          designSkills(context),
-          const SizedBox(
-            height: 30,
-          ),
-          familierSkills(context),
-          const SizedBox(
-            height: 30,
-          ),
-        ],
-      );
-    }
-
-    return Column(
-      children: [
-        const SizedBox(
-          height: 30,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: size.width * .4,
-              child: mainSkills(context),
-            ),
-            const SizedBox(
-              width: 30,
-            ),
-            SizedBox(
-              width: size.width * .4,
-              child: softwareSkills(context),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 30,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: size.width * .4,
-              child: designSkills(context),
-            ),
-            const SizedBox(
-              width: 30,
-            ),
-            SizedBox(
-              width: size.width * .4,
-              child: familierSkills(context),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 30,
-        ),
-      ],
-    );
+    return SkillSectionBuilder();
   }
+}
+
+class SkillSectionBuilder extends StatelessWidget {
+  const SkillSectionBuilder({super.key});
 
   lineSplitter(BuildContext context) {
     bool isMobile = SizeChecker.isMobile(context);
@@ -107,220 +39,77 @@ class SkillsSection extends StatelessWidget {
     );
   }
 
-  mainSkills(BuildContext context) {
-    var style = const TextStyle(
-      fontWeight: FontWeight.bold,
-      fontSize: Constants.mobileTitleSize,
-      color: Colors.black,
-    );
-    var size = MediaQuery.of(context).size;
-    bool isMobile = SizeChecker.isMobile(context);
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        List<Skills> skills = [];
+        if (state is FetchHomeDataSuccess) {
+          skills = state.homeData.skills ?? [];
+        }
 
-    return SizedBox(
-      width: size.width * (isMobile ? .6 : .35),
-      child: Column(
-        children: [
-          Column(
-            children: [
-              Text(
-                "Main Skills",
-                style: style,
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              lineSplitter(context),
-            ],
+        var style = const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: Constants.mobileTitleSize,
+          color: Colors.black,
+        );
+        var size = MediaQuery.of(context).size;
+        bool isMobile = SizeChecker.isMobile(context);
+
+        return Center(
+          child: Wrap(
+            direction: isMobile ? Axis.vertical : Axis.horizontal,
+            alignment: WrapAlignment.center,
+            children: List.generate(skills.length,
+                (index) => _eachSkillItem(context, skills[index])).toList(),
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          Wrap(
-            direction: Axis.horizontal,
-            children: [
-              SkillItem(
-                title: "Flutter",
-                imagePath: assetsPathGenerator("images/fl_logo.png"),
-              ),
-              SkillItem(
-                title: "Dart",
-                imagePath: assetsPathGenerator("images/dart_logo.png"),
-              ),
-              const SkillItem(
-                title: "BloC Pattern",
-              ),
-              const SkillItem(
-                title: "Dio & Http",
-              ),
-              const SkillItem(
-                title: "I18n & l10n",
-              ),
-              const SkillItem(
-                title: "Animations",
-              ),
-              const SkillItem(
-                title: "Asynchronous programming",
-                isLong: true,
-              ),
-            ],
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 
-  softwareSkills(BuildContext context) {
+  Widget _eachSkillItem(BuildContext context, Skills skill) {
     var style = const TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: Constants.mobileTitleSize,
       color: Colors.black,
     );
-    bool isMobile = SizeChecker.isMobile(context);
     var size = MediaQuery.of(context).size;
-    return SizedBox(
-      width: size.width * (isMobile ? .6 : .35),
-      child: Column(
-        children: [
-          Column(
-            children: [
-              Text(
-                "Software Development Skills",
-                style: style,
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              lineSplitter(context),
-            ],
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Wrap(
-            direction: Axis.horizontal,
-            children: [
-              const SkillItem(
-                title: "OOP",
-              ),
-              SkillItem(
-                title: "Git",
-                imagePath: assetsPathGenerator("images/git_logo.png"),
-              ),
-              const SkillItem(
-                title: "CI/CD",
-              ),
-              const SkillItem(
-                title: "MVVM",
-              ),
-              const SkillItem(
-                title: "Github actions",
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  designSkills(BuildContext context) {
-    var style = const TextStyle(
-      fontWeight: FontWeight.bold,
-      fontSize: Constants.mobileTitleSize,
-      color: Colors.black,
-    );
     bool isMobile = SizeChecker.isMobile(context);
-    var size = MediaQuery.of(context).size;
-
-    return SizedBox(
-      width: size.width * (isMobile ? .6 : .30),
-      child: Column(
-        children: [
-          Column(
-            children: [
-              Text(
-                "Design Skills",
-                style: style,
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              lineSplitter(context),
-            ],
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Wrap(
-            direction: Axis.horizontal,
-            children: [
-              SkillItem(
-                title: "Figma",
-                imagePath: assetsPathGenerator("images/figma_logo.png"),
-              ),
-              SkillItem(
-                title: "Adobe XD",
-                imagePath: assetsPathGenerator("images/adobe_xd_logo.png"),
-              ),
-              const SkillItem(
-                title: "Cupertino",
-              ),
-              SkillItem(
-                title: "Material design",
-                imagePath: assetsPathGenerator("images/material_logo.png"),
-                isLong: true,
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  familierSkills(BuildContext context) {
-    var style = const TextStyle(
-      fontWeight: FontWeight.bold,
-      fontSize: Constants.mobileTitleSize,
-      color: Colors.black,
-    );
-    bool isMobile = SizeChecker.isMobile(context);
-    var size = MediaQuery.of(context).size;
-    return SizedBox(
-      width: size.width * (isMobile ? .6 : .30),
-      child: Column(
-        children: [
-          Column(
-            children: [
-              Text(
-                "Familiar with",
-                style: style,
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              lineSplitter(context),
-            ],
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Wrap(
-            direction: Axis.horizontal,
-            children: [
-              SkillItem(
-                title: "Python",
-                imagePath: assetsPathGenerator("images/python_lang_logo.png"),
-              ),
-              SkillItem(
-                title: "Django",
-                imagePath: assetsPathGenerator("images/django_logo.png"),
-              ),
-              SkillItem(
-                title: "Java",
-                imagePath: assetsPathGenerator("images/java_lang_logo.png"),
-              ),
-            ],
-          ),
-        ],
+    return Padding(
+      padding: const EdgeInsets.all(Constants.mobileVerticalPadding),
+      child: SizedBox(
+        width: size.width * (isMobile ? .6 : .35),
+        child: Column(
+          children: [
+            Column(
+              children: [
+                Text(
+                  skill.title!,
+                  style: style,
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                lineSplitter(context),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Wrap(
+              direction: Axis.horizontal,
+              children: List.generate(
+                skill.skillItems!.length,
+                (index) => SkillItem(
+                  title: skill.skillItems![index].title!,
+                  isLong: skill.skillItems![index].long!,
+                  imagePath: skill.skillItems![index].image,
+                ),
+              ).toList(),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -362,10 +151,8 @@ class SkillItem extends StatelessWidget {
           children: [
             if (imagePath != null)
               Wrap(children: [
-                Image.asset(
-                  imagePath!,
-                  width: 20,
-                  height: 20,
+                CustomCacheImage(
+                  path: imagePath!,
                 ),
                 const SizedBox(
                   width: 10,
