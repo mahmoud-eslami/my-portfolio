@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       return LayoutBuilder(builder: (context, constraints) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Mahmoud.dev',
+          title: 'Mahmoud Eslami',
           theme: ThemeData(
             primarySwatch: Colors.orange,
             fontFamily: "dosis",
