@@ -1,10 +1,8 @@
-const baseUrl = "https://github.com/mahmoud-eslami/resume/blob/main/";
-var dataset = {
+{
   "projects": [
     {
       "title": "Pmodoro",
-      "description":
-          "An application that helps users implement the Pomodoro Technique.",
+      "description": "An application that helps users implement the Pomodoro Technique.",
       "banner": "",
       "images": []
     },
@@ -16,22 +14,19 @@ var dataset = {
     },
     {
       "title": "Codehub",
-      "description":
-          "CodeHub is a Persian pastebin service that provides all kind of software services completely Free and Open Source.",
+      "description": "CodeHub is a Persian pastebin service that provides all kind of software services completely Free and Open Source.",
       "banner": "",
       "images": []
     },
     {
       "title": "Barber booking",
-      "description":
-          "A barber shop booking platform using Firebase as the backend service and Flutter as the client technology.",
+      "description": "A barber shop booking platform using Firebase as the backend service and Flutter as the client technology.",
       "banner": "",
       "images": []
     },
     {
       "title": "Meal planners",
-      "description":
-          "A desktop app that helps users find recipes with detailed information.",
+      "description": "A desktop app that helps users find recipes with detailed information.",
       "banner": "",
       "images": []
     }
@@ -43,32 +38,32 @@ var dataset = {
       "skillItems": [
         {
           "title": "Flutter",
-          "image": "$baseUrl/portfolio/fl_logo.png",
+          "image": "$/portfolio/fl_logo.png"
         },
         {
           "title": "Dart",
-          "image": "$baseUrl/portfolio/dart_logo.png",
+          "image": "$/portfolio/dart_logo.png"
         },
         {
           "title": "BLoC Pattern",
-          "image": null,
+          "image": null
         },
         {
           "title": "Dio & Http",
-          "image": null,
+          "image": null
         },
         {
           "title": "i18n & l10n",
-          "image": null,
+          "image": null
         },
         {
           "title": "Animations",
-          "image": null,
+          "image": null
         },
         {
           "title": "Asynchronous programming",
-          "image": null,
-        },
+          "image": null
+        }
       ]
     },
     {
@@ -77,24 +72,24 @@ var dataset = {
       "skillItems": [
         {
           "title": "OOP",
-          "image": null,
+          "image": null
         },
         {
           "title": "Git",
-          "image": "$baseUrl/portfolio/git_logo.png",
+          "image": "$/portfolio/git_logo.png"
         },
         {
           "title": "CI / CD",
-          "image": null,
+          "image": null
         },
         {
           "title": "MVVM",
-          "image": null,
+          "image": null
         },
         {
           "title": "Github actions",
-          "image": null,
-        },
+          "image": null
+        }
       ]
     },
     {
@@ -103,20 +98,20 @@ var dataset = {
       "skillItems": [
         {
           "title": "Figma",
-          "image": "$baseUrl/portfolio/figma_logo.png",
+          "image": "$/portfolio/figma_logo.png"
         },
         {
           "title": "Adobe XD",
-          "image": "$baseUrl/portfolio/adobe_xd_logo.png",
+          "image": "$/portfolio/adobe_xd_logo.png"
         },
         {
           "title": "Cupertino",
-          "image": null,
+          "image": null
         },
         {
           "title": "Material Design",
-          "image": "$baseUrl/portfolio/material_logo.png",
-        },
+          "image": "$/portfolio/material_logo.png"
+        }
       ]
     },
     {
@@ -125,13 +120,13 @@ var dataset = {
       "skillItems": [
         {
           "title": "Python",
-          "image": "$baseUrl/portfolio/python_lang_logo.png",
+          "image": "$/portfolio/python_lang_logo.png"
         },
         {
           "title": "Django",
-          "image": "$baseUrl/portfolio/django_logo.png",
-        },
+          "image": "$/portfolio/django_logo.png"
+        }
       ]
-    },
-  ],
-};
+    }
+  ]
+}
