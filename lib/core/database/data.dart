@@ -1,3 +1,4 @@
+const baseUrl = "https://github.com/mahmoud-eslami/resume/blob/main/";
 var dataset = {
   "projects": [
     {
@@ -42,31 +43,31 @@ var dataset = {
       "list": [
         {
           "title": "Flutter",
-          "image": "",
+          "image": "$baseUrl/portfolio/fl_logo.png",
         },
         {
           "title": "Dart",
-          "image": "",
+          "image": "$baseUrl/portfolio/dart_logo.png",
         },
         {
           "title": "BLoC Pattern",
-          "image": "",
+          "image": null,
         },
         {
           "title": "Dio & Http",
-          "image": "",
+          "image": null,
         },
         {
           "title": "i18n & l10n",
-          "image": "",
+          "image": null,
         },
         {
           "title": "Animations",
-          "image": "",
+          "image": null,
         },
         {
           "title": "Asynchronous programming",
-          "image": "",
+          "image": null,
         },
       ]
     },
@@ -76,23 +77,23 @@ var dataset = {
       "list": [
         {
           "title": "OOP",
-          "image": "",
+          "image": null,
         },
         {
           "title": "Git",
-          "image": "",
+          "image": "$baseUrl/portfolio/git_logo.png",
         },
         {
           "title": "CI / CD",
-          "image": "",
+          "image": null,
         },
         {
           "title": "MVVM",
-          "image": "",
+          "image": null,
         },
         {
           "title": "Github actions",
-          "image": "",
+          "image": null,
         },
       ]
     },
@@ -102,19 +103,19 @@ var dataset = {
       "list": [
         {
           "title": "Figma",
-          "image": "",
+          "image": "$baseUrl/portfolio/figma_logo.png",
         },
         {
           "title": "Adobe XD",
-          "image": "",
+          "image": "$baseUrl/portfolio/adobe_xd_logo.png",
         },
         {
           "title": "Cupertino",
-          "image": "",
+          "image": null,
         },
         {
           "title": "Material Design",
-          "image": "",
+          "image": "$baseUrl/portfolio/material_logo.png",
         },
       ]
     },
@@ -124,11 +125,11 @@ var dataset = {
       "list": [
         {
           "title": "Python",
-          "image": "",
+          "image": "$baseUrl/portfolio/python_lang_logo.png",
         },
         {
           "title": "Django",
-          "image": "",
+          "image": "$baseUrl/portfolio/django_logo.png",
         },
       ]
     },
