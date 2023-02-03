@@ -150,14 +150,17 @@ class SkillItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (imagePath != null)
-              Wrap(children: [
-                CustomCacheImage(
-                  path: imagePath!,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-              ]),
+              Wrap(
+                alignment: WrapAlignment.center,
+                children: [
+                  CustomCacheImage(
+                    path: imagePath!,
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                ],
+              ),
             Text(
               title,
               style: style,
