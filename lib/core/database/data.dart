@@ -1,4 +1,4 @@
-const baseUrl = "https://github.com/mahmoud-eslami/resume/blob/main/";
+const baseUrl = "https://raw.githubusercontent.com/mahmoud-eslami/resume/main";
 var dataset = {
   "projects": [
     {
@@ -130,7 +130,7 @@ var dataset = {
         },
         {
           "title": "Material Design",
-          "long": false,
+          "long": true,
           "image": "$baseUrl/portfolio/material_logo.png",
         },
       ]
