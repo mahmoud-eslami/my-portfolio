@@ -7,11 +7,13 @@ class CustomCacheImage extends StatelessWidget {
     this.width = 20,
     this.height = 20,
     required this.path,
+    this.fit,
   });
 
   final double width;
   final double height;
   final String path;
+  final BoxFit? fit;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class CustomCacheImage extends StatelessWidget {
         width: width,
         height: height,
         cache: true,
+        fit: fit,
       ),
     );
   }

@@ -3,15 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_portfolio/core/constants/constants.dart';
 import 'package:flutter_portfolio/core/utils/size_checker.dart';
 import 'package:flutter_portfolio/features/home/bloc/bloc/home_bloc.dart';
-import 'package:flutter_portfolio/features/home/ui/widgets/name_logo.dart';
-import 'package:flutter_portfolio/features/home/ui/widgets/skills_sections.dart';
-import 'package:flutter_portfolio/features/home/ui/widgets/social_section.dart';
 
-import '../../../di.dart';
+import '../../../../di.dart';
 import 'widgets/buttons_section.dart';
 import 'widgets/footer_section.dart';
+import 'widgets/name_logo.dart';
 import 'widgets/profile_section.dart';
 import 'widgets/projects_section.dart';
+import 'widgets/skills_sections.dart';
+import 'widgets/social_section.dart';
 import 'widgets/title_section.dart';
 import 'widgets/what_do_section.dart';
 

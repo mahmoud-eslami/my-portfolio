@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/core/utils/assets_path_generator.dart';
 
-import '../../../../core/constants/constants.dart';
-import '../../../../core/utils/size_checker.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/utils/size_checker.dart';
 
 class WhatIDoSection extends StatelessWidget {
   const WhatIDoSection({super.key});

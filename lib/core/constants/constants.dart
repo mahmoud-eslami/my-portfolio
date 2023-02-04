@@ -25,6 +25,8 @@ class Constants {
       "I also have experience working with Firebase, RESTful APIs, and other programming languages and frameworks which can be beneficial for building robust mobile applications.";
 
   // dimens
+  static const defaultBorderRadius = 10.0;
+  static const defaultPadding = 8.0;
   // mobile
   static const mobileHeadSize = 40.0;
   static const mobileTitleSize = 30.0;

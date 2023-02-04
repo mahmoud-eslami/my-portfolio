@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/constants.dart';
-import '../../../../core/global_widgets/custom_button.dart';
-import '../../../../core/utils/size_checker.dart';
-import '../../../../core/utils/url_launcher.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/global_widgets/custom_button.dart';
+import '../../../../../core/utils/size_checker.dart';
+import '../../../../../core/utils/url_launcher.dart';
 
 class FooterSection extends StatelessWidget {
   const FooterSection({super.key});

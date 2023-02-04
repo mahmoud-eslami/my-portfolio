@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_portfolio/core/global_widgets/custom_cache_image.dart';
 import 'package:flutter_portfolio/features/home/bloc/bloc/home_bloc.dart';
 
-import '../../../../core/constants/constants.dart';
-import '../../../../core/utils/size_checker.dart';
-import '../../data/model/home_model.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/utils/size_checker.dart';
+import '../../../data/model/home_model.dart';
 
 class SkillsSection extends StatelessWidget {
   const SkillsSection({super.key});
@@ -21,7 +21,7 @@ class SkillsSection extends StatelessWidget {
   }
 
   _builder(BuildContext context) {
-    return SkillSectionBuilder();
+    return const SkillSectionBuilder();
   }
 }
 
