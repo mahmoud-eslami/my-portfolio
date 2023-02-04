@@ -3,7 +3,7 @@ import 'package:flutter_portfolio/core/constants/constants.dart';
 import 'package:flutter_portfolio/core/global_widgets/animation_builder.dart';
 import 'package:flutter_portfolio/core/utils/assets_path_generator.dart';
 
-import '../../../../core/utils/size_checker.dart';
+import '../../../../../core/utils/size_checker.dart';
 
 class TitleSection extends StatelessWidget {
   const TitleSection({super.key});

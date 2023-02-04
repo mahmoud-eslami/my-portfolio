@@ -6,9 +6,9 @@ import 'package:flutter_portfolio/core/global_widgets/custom_button.dart';
 import 'package:flutter_portfolio/core/utils/assets_path_generator.dart';
 import 'package:flutter_portfolio/features/home/bloc/bloc/home_bloc.dart';
 
-import '../../../../core/constants/constants.dart';
-import '../../../../core/global_widgets/custom_mouse_region.dart';
-import '../../../../core/utils/size_checker.dart';
+import '../../../../../core/constants/constants.dart';
+import '../../../../../core/global_widgets/custom_mouse_region.dart';
+import '../../../../../core/utils/size_checker.dart';
 
 class ProjectsSection extends StatelessWidget {
   const ProjectsSection({super.key});
