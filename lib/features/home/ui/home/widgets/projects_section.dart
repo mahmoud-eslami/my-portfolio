@@ -5,10 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_portfolio/core/global_widgets/custom_button.dart';
 import 'package:flutter_portfolio/core/utils/assets_path_generator.dart';
 import 'package:flutter_portfolio/features/home/bloc/bloc/home_bloc.dart';
+import 'package:flutter_portfolio/features/home/ui/image_preview/image_preview_screen.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/global_widgets/custom_mouse_region.dart';
 import '../../../../../core/utils/size_checker.dart';
+import '../../../data/model/home_model.dart';
 
 class ProjectsSection extends StatelessWidget {
   const ProjectsSection({super.key});
@@ -66,14 +69,7 @@ class ProjectsSection extends StatelessWidget {
                           items: List.generate(
                               state.homeData.projects!.length,
                               (index) => ProjectItem(
-                                    imagePath:
-                                        state.homeData.projects![index].banner,
-                                    title:
-                                        state.homeData.projects![index].title ??
-                                            "Unkowne",
-                                    description: state.homeData.projects![index]
-                                            .description ??
-                                        "Unkowne",
+                                    project: state.homeData.projects![index],
                                   )).toList(),
                         );
                       }
@@ -126,13 +122,10 @@ class ProjectsSection extends StatelessWidget {
 class ProjectItem extends StatefulWidget {
   const ProjectItem({
     super.key,
-    this.imagePath,
-    required this.title,
-    required this.description,
+    required this.project,
   });
 
-  final String title, description;
-  final String? imagePath;
+  final Projects project;
 
   @override
   State<ProjectItem> createState() => _ProjectItemState();
@@ -151,100 +144,105 @@ class _ProjectItemState extends State<ProjectItem> {
     );
     bool isMobile = SizeChecker.isMobile(context);
 
-    return CustomMouseRegion(
-      cursor: SystemMouseCursors.click,
-      onEnter: (event) {
-        isHover = true;
-        setState(() {});
+    return GestureDetector(
+      onTap: () {
+        context.go(ImagePreviewScreen.path, extra: widget.project);
       },
-      onExit: (event) {
-        isHover = false;
-        setState(() {});
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Container(
-          width: isMobile ? size.width * .9 : 450,
-          height: 450,
-          decoration: BoxDecoration(
-            color: Constants.creamColor.withOpacity(.2),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Column(
-            children: [
-              Material(
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(10),
+      child: CustomMouseRegion(
+        cursor: SystemMouseCursors.click,
+        onEnter: (event) {
+          isHover = true;
+          setState(() {});
+        },
+        onExit: (event) {
+          isHover = false;
+          setState(() {});
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Container(
+            width: isMobile ? size.width * .9 : 450,
+            height: 450,
+            decoration: BoxDecoration(
+              color: Constants.creamColor.withOpacity(.2),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              children: [
+                Material(
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(10),
+                  ),
+                  child: ExtendedImage.network(
+                    widget.project.banner ?? "",
+                    height: 330,
+                    width: size.width * .9,
+                    fit: BoxFit.cover,
+                    cache: true,
+                  ),
                 ),
-                child: ExtendedImage.network(
-                  widget.imagePath ?? "",
-                  height: 330,
-                  width: size.width * .9,
-                  fit: BoxFit.cover,
-                  cache: true,
-                ),
-              ),
-              const Expanded(
-                  child: SizedBox(
-                height: 1,
-              )),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            widget.title,
-                            style: style.copyWith(
-                                color: isHover
-                                    ? Constants.orangeColor
-                                    : Constants.creamColor),
-                          ),
-                          AnimatedContainer(
-                            duration: const Duration(milliseconds: 600),
-                            width: isHover ? 150 : 0,
-                            height: 3,
-                            color: isHover
-                                ? Constants.orangeColor
-                                : Colors.transparent,
-                          ),
-                          const SizedBox(
-                            height: 4,
-                          ),
-                          Text(
-                            widget.description,
-                            style: style.copyWith(
-                              fontSize: 12,
-                              fontWeight: FontWeight.normal,
+                const Expanded(
+                    child: SizedBox(
+                  height: 1,
+                )),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              widget.project.title ?? "Unknown",
+                              style: style.copyWith(
+                                  color: isHover
+                                      ? Constants.orangeColor
+                                      : Constants.creamColor),
                             ),
-                            maxLines: 3,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
+                            AnimatedContainer(
+                              duration: const Duration(milliseconds: 600),
+                              width: isHover ? 150 : 0,
+                              height: 3,
+                              color: isHover
+                                  ? Constants.orangeColor
+                                  : Colors.transparent,
+                            ),
+                            const SizedBox(
+                              height: 4,
+                            ),
+                            Text(
+                              widget.project.description ?? "Unknown",
+                              style: style.copyWith(
+                                fontSize: 12,
+                                fontWeight: FontWeight.normal,
+                              ),
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Icon(
-                      Icons.arrow_forward,
-                      color: isHover
-                          ? Constants.orangeColor
-                          : Constants.creamColor,
-                      size: 60,
-                    )
-                  ],
+                      Icon(
+                        Icons.arrow_forward,
+                        color: isHover
+                            ? Constants.orangeColor
+                            : Constants.creamColor,
+                        size: 60,
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              const Expanded(
-                  child: SizedBox(
-                height: 1,
-              )),
-            ],
+                const Expanded(
+                    child: SizedBox(
+                  height: 1,
+                )),
+              ],
+            ),
           ),
         ),
       ),
