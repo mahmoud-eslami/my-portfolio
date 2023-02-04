@@ -21,7 +21,7 @@ class SkillsSection extends StatelessWidget {
   }
 
   _builder(BuildContext context) {
-    return SkillSectionBuilder();
+    return const SkillSectionBuilder();
   }
 }
 
