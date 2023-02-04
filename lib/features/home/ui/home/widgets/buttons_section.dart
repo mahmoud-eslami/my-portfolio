@@ -3,8 +3,8 @@ import 'package:flutter_portfolio/core/constants/constants.dart';
 import 'package:flutter_portfolio/core/global_widgets/animation_builder.dart';
 import 'package:flutter_portfolio/core/utils/url_launcher.dart';
 
-import '../../../../core/global_widgets/custom_button.dart';
-import '../../../../core/utils/size_checker.dart';
+import '../../../../../core/global_widgets/custom_button.dart';
+import '../../../../../core/utils/size_checker.dart';
 
 class ButtonsSection extends StatelessWidget {
   const ButtonsSection({super.key});
