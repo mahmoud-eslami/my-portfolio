@@ -5,13 +5,13 @@ var dataset = {
       "title": "Pmodoro",
       "description":
           "An application that helps users implement the Pomodoro Technique.",
-      "banner": "",
+      "banner": "$baseUrl/portfolio/pomodoro_banner.png",
       "images": []
     },
     {
       "title": "Ketolife",
       "description": "A keto diet tracking and information app.",
-      "banner": "",
+      "banner": "$baseUrl/portfolio/ketolife_banner.png",
       "images": [
         "$baseUrl/images/ketolife/27.png",
         "$baseUrl/images/ketolife/28.png",
@@ -45,7 +45,7 @@ var dataset = {
       "title": "Codehub",
       "description":
           "CodeHub is a Persian pastebin service that provides all kind of software services completely Free and Open Source.",
-      "banner": "",
+      "banner": "$baseUrl/portfolio/codehub_banner.png",
       "images": [
         "https://raw.githubusercontent.com/codehub-ir/codehub-mobile/main/screen-shots/13.png",
         "https://raw.githubusercontent.com/codehub-ir/codehub-mobile/main/screen-shots/14.png",
@@ -60,7 +60,7 @@ var dataset = {
       "title": "Barber booking",
       "description":
           "A barber shop booking platform using Firebase as the backend service and Flutter as the client technology.",
-      "banner": "",
+      "banner": "$baseUrl/portfolio/barber_banner.png",
       "images": [
         "https://raw.githubusercontent.com/mahmoud-eslami/barber_booking/master/screen_shots/1.png",
         "https://raw.githubusercontent.com/mahmoud-eslami/barber_booking/master/screen_shots/2.png",
@@ -81,7 +81,7 @@ var dataset = {
       "title": "Meal planners",
       "description":
           "A desktop app that helps users find recipes with detailed information.",
-      "banner": "",
+      "banner": "$baseUrl/portfolio/meal_planer.png",
       "images": [
         "https://raw.githubusercontent.com/mahmoud-eslami/resume/main/images/meal%20planner/meal-planner-1.png",
         "https://raw.githubusercontent.com/mahmoud-eslami/resume/main/images/meal%20planner/meal-planner-2.png",

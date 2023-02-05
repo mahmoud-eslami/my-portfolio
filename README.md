@@ -1,16 +1,14 @@
-# flutter_portfolio
+# My Portfolio
 
-A new Flutter project.
+This is my personal portfolio project showcasing my skills, experiences and projects.
 
-## Getting Started
+## Technologies Used
+- Flutter
+- Dart
+- BloC as state management
 
-This project is a starting point for a Flutter application.
+## Contributions
+I welcome any contributions and suggestions to make this project better. Feel free to open an issue or make a pull request.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## License
+This project is licensed under the MIT License.
