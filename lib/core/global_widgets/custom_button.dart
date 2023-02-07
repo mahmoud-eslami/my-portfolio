@@ -10,11 +10,13 @@ class CustomButton extends StatefulWidget {
     required this.onPressed,
     this.width,
     this.height,
+    this.textStyle,
   });
 
   final String title;
   final VoidCallback onPressed;
   final double? width, height;
+  final TextStyle? textStyle;
 
   @override
   State<CustomButton> createState() => _CustomButtonState();
@@ -64,7 +66,10 @@ class _CustomButtonState extends State<CustomButton> {
             onPressed: widget.onPressed,
             child: Text(
               widget.title,
-              style: style,
+              style: widget.textStyle?.copyWith(
+                    color: isHoverd ? Constants.creamColor : Colors.black,
+                  ) ??
+                  style,
             ),
           ),
         ),

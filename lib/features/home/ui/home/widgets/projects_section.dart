@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_portfolio/core/global_widgets/custom_button.dart';
 import 'package:flutter_portfolio/core/utils/assets_path_generator.dart';
 import 'package:flutter_portfolio/features/home/bloc/bloc/home_bloc.dart';
-import 'package:flutter_portfolio/features/home/ui/image_preview/image_preview_screen.dart';
+import 'package:flutter_portfolio/features/home/ui/project_detail/project_detail_screen.dart';
 
 import '../../../../../core/constants/constants.dart';
 import '../../../../../core/global_widgets/custom_mouse_region.dart';
@@ -145,11 +145,16 @@ class _ProjectItemState extends State<ProjectItem> {
 
     return GestureDetector(
       onTap: () {
+        // Navigator.push(
+        //     context,
+        //     MaterialPageRoute(
+        //       builder: (context) =>
+        //           ImagePreviewScreen(images: widget.project.images!),
+        //     ));
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) =>
-                  ImagePreviewScreen(images: widget.project.images!),
+              builder: (context) => PorjectDetailScreen(item: widget.project),
             ));
       },
       child: CustomMouseRegion(
