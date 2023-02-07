@@ -54,6 +54,9 @@ var dataset = {
       "technologies": [
         "Flutter",
         "Dart",
+        "BloC (state management)",
+        "get it (dependency injection)",
+        "Sqflite (offline database)"
       ],
     },
     {
