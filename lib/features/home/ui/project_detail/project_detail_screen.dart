@@ -44,7 +44,7 @@ class PorjectDetailScreen extends StatelessWidget {
                     children: [
                       IconButton(
                           onPressed: () => Navigator.pop(context),
-                          icon: Icon(Icons.arrow_back)),
+                          icon: const Icon(Icons.arrow_back)),
                       Text(
                         "Project Details",
                         style: style.headlineSmall?.copyWith(
@@ -64,7 +64,7 @@ class PorjectDetailScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(
                             Constants.defaultBorderRadius,
                           ),
-                          side: BorderSide(
+                          side: const BorderSide(
                             color: Colors.black,
                             width: 3,
                           ),
