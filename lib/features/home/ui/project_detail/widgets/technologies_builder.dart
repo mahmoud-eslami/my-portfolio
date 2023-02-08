@@ -19,7 +19,7 @@ class TechnologiesBuilder extends StatelessWidget {
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.only(top: Constants.defaultPadding),
           child: Text(
-            "✅ " + techs[index],
+            "✅ ${techs[index]}",
             style: style.titleLarge?.copyWith(fontWeight: FontWeight.bold),
           ),
         ),

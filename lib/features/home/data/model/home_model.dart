@@ -15,14 +15,14 @@ class HomeModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
+    final Map<String, dynamic> data = <String, dynamic>{};
     if(projects != null) {
-      _data["projects"] = projects?.map((e) => e.toJson()).toList();
+      data["projects"] = projects?.map((e) => e.toJson()).toList();
     }
     if(skills != null) {
-      _data["skills"] = skills?.map((e) => e.toJson()).toList();
+      data["skills"] = skills?.map((e) => e.toJson()).toList();
     }
-    return _data;
+    return data;
   }
 }
 
@@ -46,13 +46,13 @@ class Skills {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["title"] = title;
-    _data["description"] = description;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["title"] = title;
+    data["description"] = description;
     if(skillItems != null) {
-      _data["skillItems"] = skillItems?.map((e) => e.toJson()).toList();
+      data["skillItems"] = skillItems?.map((e) => e.toJson()).toList();
     }
-    return _data;
+    return data;
   }
 }
 
@@ -76,11 +76,11 @@ class SkillItems {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["title"] = title;
-    _data["long"] = long;
-    _data["image"] = image;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["title"] = title;
+    data["long"] = long;
+    data["image"] = image;
+    return data;
   }
 }
 
@@ -120,18 +120,18 @@ class Projects {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["title"] = title;
-    _data["description"] = description;
-    _data["banner"] = banner;
-    _data["isOpenSource"] = isOpenSource;
-    _data["link"] = link;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["title"] = title;
+    data["description"] = description;
+    data["banner"] = banner;
+    data["isOpenSource"] = isOpenSource;
+    data["link"] = link;
     if(technologies != null) {
-      _data["technologies"] = technologies;
+      data["technologies"] = technologies;
     }
     if(images != null) {
-      _data["images"] = images;
+      data["images"] = images;
     }
-    return _data;
+    return data;
   }
 }
