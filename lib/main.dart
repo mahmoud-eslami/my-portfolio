@@ -18,6 +18,15 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Mahmoud Eslami',
           theme: ThemeData(
+            appBarTheme: AppBarTheme(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              titleTextStyle:
+                  Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+            ),
             primarySwatch: Colors.orange,
             fontFamily: "dosis",
             scaffoldBackgroundColor: Colors.white,

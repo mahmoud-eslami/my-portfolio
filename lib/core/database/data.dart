@@ -6,7 +6,16 @@ var dataset = {
       "description":
           "An application that helps users implement the Pomodoro Technique.",
       "banner": "$baseUrl/portfolio/pomodoro_banner.png",
-      "images": []
+      "images": [],
+      "isOpenSource": true,
+      "link": "https://github.com/time-mastery/pmodoro-application",
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "BloC (state management)",
+        "get it (dependency injection)",
+        "Sqflite (offline database)"
+      ],
     },
     {
       "title": "Ketolife",
@@ -39,7 +48,16 @@ var dataset = {
         "$baseUrl/images/ketolife/15.png",
         "$baseUrl/images/ketolife/18.png",
         "$baseUrl/images/ketolife/19.png",
-      ]
+      ],
+      "isOpenSource": false,
+      "link": "https://",
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "BloC (state management)",
+        "get it (dependency injection)",
+        "Sqflite (offline database)"
+      ],
     },
     {
       "title": "Codehub",
@@ -54,7 +72,15 @@ var dataset = {
         "https://raw.githubusercontent.com/codehub-ir/codehub-mobile/main/screen-shots/17.png",
         "https://raw.githubusercontent.com/codehub-ir/codehub-mobile/main/screen-shots/18.png",
         "https://raw.githubusercontent.com/codehub-ir/codehub-mobile/main/screen-shots/19.png",
-      ]
+      ],
+      "isOpenSource": true,
+      "link": "https://github.com/codehub-ir/codehub-mobile/",
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "BloC (state management)",
+        "get it (dependency injection)",
+      ],
     },
     {
       "title": "Barber booking",
@@ -75,7 +101,17 @@ var dataset = {
         "https://raw.githubusercontent.com/mahmoud-eslami/barber_booking/master/screen_shots/11.png",
         "https://raw.githubusercontent.com/mahmoud-eslami/barber_booking/master/screen_shots/12.png",
         "https://raw.githubusercontent.com/mahmoud-eslami/barber_booking/master/screen_shots/13.png",
-      ]
+      ],
+      "isOpenSource": true,
+      "link": "https://github.com/mahmoud-eslami/barber-booking/",
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "Firebase",
+        "Firebase Analytics",
+        "Firebase Firesotre",
+        "Get-X (state management / dependency injection)",
+      ],
     },
     {
       "title": "Meal planners",
@@ -87,7 +123,15 @@ var dataset = {
         "https://raw.githubusercontent.com/mahmoud-eslami/resume/main/images/meal%20planner/meal-planner-2.png",
         "https://raw.githubusercontent.com/mahmoud-eslami/resume/main/images/meal%20planner/meal-planner-3.png",
         "https://raw.githubusercontent.com/mahmoud-eslami/resume/main/images/meal%20planner/meal-planner-4.png",
-      ]
+      ],
+      "isOpenSource": false,
+      "link": "https://",
+      "technologies": [
+        "Flutter",
+        "Flutter-Desktop",
+        "Dart",
+        "Get-X (state management / dependency injection)",
+      ],
     }
   ],
   "skills": [

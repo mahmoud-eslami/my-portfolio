@@ -4,9 +4,10 @@
       "title": "Pmodoro",
       "description": "An application that helps users implement the Pomodoro Technique.",
       "banner": "",
-      "images": [
-        "asdf"
-      ]
+      "isOpenSource": true,
+      "link": "https://",
+      "technologies": ["asdfasdf", "asdfasdf"],
+      "images": ["asdf"]
     }
   ],
   "skills": [
