@@ -129,7 +129,7 @@ class _ProjectItemState extends State<ProjectItem> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => PorjectDetailScreen(item: widget.project),
+              builder: (context) => ProjectDetailScreen(item: widget.project),
             ));
       },
       child: CustomMouseRegion(
