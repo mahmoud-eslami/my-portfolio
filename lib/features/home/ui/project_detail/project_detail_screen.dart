@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_portfolio/core/utils/url_launcher.dart';
 import 'package:flutter_portfolio/features/home/data/model/home_model.dart';
 
 import '../../../../core/constants/constants.dart';
@@ -16,8 +17,12 @@ class ProjectDetailScreen extends HookWidget {
   Widget build(BuildContext context) {
     final currentIndex = useState(0);
 
-    var size = MediaQuery.of(context).size;
-    var style = Theme.of(context).textTheme;
+    var size = MediaQuery
+        .of(context)
+        .size;
+    var style = Theme
+        .of(context)
+        .textTheme;
     bool isMobile = SizeChecker.isMobile(context);
     bool isTablet = size.width > 600 && size.width < 900;
     return Scaffold(
@@ -45,7 +50,7 @@ class ProjectDetailScreen extends HookWidget {
                   height: 500,
                   decoration: BoxDecoration(
                     borderRadius:
-                        BorderRadius.circular(Constants.defaultBorderRadius),
+                    BorderRadius.circular(Constants.defaultBorderRadius),
                     color: Colors.black,
                     boxShadow: [
                       BoxShadow(
@@ -58,7 +63,7 @@ class ProjectDetailScreen extends HookWidget {
                   ),
                   child: Material(
                     borderRadius:
-                        BorderRadius.circular(Constants.defaultBorderRadius),
+                    BorderRadius.circular(Constants.defaultBorderRadius),
                     clipBehavior: Clip.hardEdge,
                     child: CustomCacheImage(
                       path: item.banner!,
@@ -114,57 +119,67 @@ class ProjectDetailScreen extends HookWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: List.generate(
                                 item.images!.length,
-                                (index) => GestureDetector(
-                                  onTap: () {
-                                    currentIndex.value = index;
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: Constants.defaultPadding),
-                                    child: Stack(
-                                      children: [
-                                        Material(
-                                          clipBehavior:
+                                    (index) =>
+                                    GestureDetector(
+                                      onTap: () {
+                                        currentIndex.value = index;
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: Constants
+                                                .defaultPadding),
+                                        child: Stack(
+                                          children: [
+                                            Material(
+                                              clipBehavior:
                                               Clip.antiAliasWithSaveLayer,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                                Constants.defaultBorderRadius),
-                                            side: BorderSide(
-                                              color: Constants.orangeColor,
-                                              width:
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius
+                                                    .circular(
+                                                    Constants
+                                                        .defaultBorderRadius),
+                                                side: BorderSide(
+                                                  color: Constants.orangeColor,
+                                                  width:
                                                   (currentIndex.value == index)
                                                       ? 4
                                                       : 0,
+                                                ),
+                                              ),
+                                              child: SizedBox(
+                                                width: (currentIndex.value ==
+                                                    index)
+                                                    ? 100
+                                                    : 30,
+                                                height: 100,
+                                                child: CustomCacheImage(
+                                                  fit: BoxFit.cover,
+                                                  path: item.images![index],
+                                                ),
+                                              ),
                                             ),
-                                          ),
-                                          child: SizedBox(
-                                            width: (currentIndex.value == index)
-                                                ? 100
-                                                : 30,
-                                            height: 100,
-                                            child: CustomCacheImage(
-                                              fit: BoxFit.cover,
-                                              path: item.images![index],
+                                            Container(
+                                              width: (currentIndex.value ==
+                                                  index)
+                                                  ? 100
+                                                  : 30,
+                                              height: 100,
+                                              decoration: BoxDecoration(
+                                                color: currentIndex.value ==
+                                                    index
+                                                    ? Colors.transparent
+                                                    : Colors.black.withOpacity(
+                                                    .6),
+                                                borderRadius: BorderRadius
+                                                    .circular(
+                                                    Constants
+                                                        .defaultBorderRadius),
+                                              ),
                                             ),
-                                          ),
+                                          ],
                                         ),
-                                        Container(
-                                          width: (currentIndex.value == index)
-                                              ? 100
-                                              : 30,
-                                          height: 100,
-                                          decoration: BoxDecoration(
-                                            color: currentIndex.value == index
-                                                ? Colors.transparent
-                                                : Colors.black.withOpacity(.6),
-                                            borderRadius: BorderRadius.circular(
-                                                Constants.defaultBorderRadius),
-                                          ),
-                                        ),
-                                      ],
+                                      ),
                                     ),
-                                  ),
-                                ),
                               ).toList(),
                             ),
                           ),
@@ -189,8 +204,12 @@ class DetailsSection extends HookWidget {
   Widget build(BuildContext context) {
     final tabIndex = useState(0);
 
-    var size = MediaQuery.of(context).size;
-    var style = Theme.of(context).textTheme;
+    var size = MediaQuery
+        .of(context)
+        .size;
+    var style = Theme
+        .of(context)
+        .textTheme;
     bool isMobile = SizeChecker.isMobile(context);
     bool isTablet = size.width > 600 && size.width < 900;
     List titles = ["Description", "Technologies"];
@@ -206,45 +225,66 @@ class DetailsSection extends HookWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
                 titles.length,
-                (index) => GestureDetector(
-                  onTap: () => tabIndex.value = index,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40),
-                    child: Column(
-                      children: [
-                        Text(
-                          titles[index],
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FontStyle.italic,
-                            color: tabIndex.value == index
-                                ? Constants.orangeColor
-                                : Constants.creamColor,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        if (tabIndex.value == index)
-                          Container(
-                            width: 10,
-                            height: 10,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Constants.orangeColor,
+                    (index) =>
+                    GestureDetector(
+                      onTap: () => tabIndex.value = index,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 40),
+                        child: Column(
+                          children: [
+                            Text(
+                              titles[index],
+                              style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic,
+                                color: tabIndex.value == index
+                                    ? Constants.orangeColor
+                                    : Constants.creamColor,
+                              ),
                             ),
-                          ),
-                      ],
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            if (tabIndex.value == index)
+                              Container(
+                                width: 10,
+                                height: 10,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Constants.orangeColor,
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
-                ),
               ),
             ),
             const SizedBox(
               height: 50,
             ),
-            if (tabIndex.value == 0)
+            if (tabIndex.value == 0) ...[
+
+              if (item.isOpenSource!)
+                GestureDetector(
+                  onTap: () {
+                    launchTheUrl(item.link!);
+                  },
+                  child: const Text(
+                    "Open source | check source code",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blueAccent,
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              const SizedBox(
+                height: 20,
+              ),
               Center(
                 child: SizedBox(
                   width: 400,
@@ -258,6 +298,8 @@ class DetailsSection extends HookWidget {
                   ),
                 ),
               ),
+
+            ],
             if (tabIndex.value == 1)
               SizedBox(
                 width: 600,
@@ -267,11 +309,12 @@ class DetailsSection extends HookWidget {
                   direction: Axis.horizontal,
                   children: List.generate(
                     item.technologies!.length,
-                    (index) => SkillItem(
-                      title: item.technologies![index],
-                      isLong: true,
-                      lightTitle: true,
-                    ),
+                        (index) =>
+                        SkillItem(
+                          title: item.technologies![index],
+                          isLong: true,
+                          lightTitle: true,
+                        ),
                   ).toList(),
                 ),
               ),
