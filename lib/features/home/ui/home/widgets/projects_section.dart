@@ -152,6 +152,7 @@ class _ProjectItemState extends State<ProjectItem> {
             child: Column(
               children: [
                 Material(
+                  color: Constants.creamColor.withOpacity(.2),
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   borderRadius: const BorderRadius.vertical(
                     top: Radius.circular(10),
@@ -161,6 +162,7 @@ class _ProjectItemState extends State<ProjectItem> {
                     width: size.width * .9,
                     fit: BoxFit.cover,
                     cache: true,
+                    enableLoadState: false,
                   ),
                 ),
                 const Expanded(
