@@ -1,15 +1,13 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_portfolio/core/global_widgets/custom_button.dart';
-import 'package:flutter_portfolio/core/utils/assets_path_generator.dart';
-import 'package:flutter_portfolio/features/home/bloc/bloc/home_bloc.dart';
 import 'package:flutter_portfolio/features/home/ui/project_detail/project_detail_screen.dart';
 
 import '../../../../../core/constants/constants.dart';
+import '../../../../../core/global_widgets/custom_button.dart';
 import '../../../../../core/global_widgets/custom_mouse_region.dart';
 import '../../../../../core/utils/size_checker.dart';
+import '../../../bloc/bloc/home_bloc.dart';
 import '../../../data/model/home_model.dart';
 
 class ProjectsSection extends StatelessWidget {
@@ -28,93 +26,76 @@ class ProjectsSection extends StatelessWidget {
 
     var outerBoxSize = 730.0;
     const spacer = 50.0;
-    return SizedBox(
-      height: outerBoxSize,
-      child: Stack(
-        children: [
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              width: size.width,
-              height: outerBoxSize - 40,
-              decoration: const BoxDecoration(
-                color: Colors.black,
-              ),
-              child: Column(
-                children: [
-                  const SizedBox(height: spacer),
-                  Text(
-                    "Projects",
-                    style: style,
-                  ),
-                  const SizedBox(height: spacer),
-                  BlocBuilder(
-                    bloc: context.read<HomeBloc>(),
-                    builder: (context, state) {
-                      if (state is FetchHomeDataSuccess) {
-                        return CarouselSlider(
-                          options: CarouselOptions(
-                            height: 450.0,
-                            disableCenter: !isMobile,
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            autoPlay: true,
-                            padEnds: false,
-                            viewportFraction: isMobile
-                                ? 1
-                                : isTablet
-                                    ? .7
-                                    : .4,
-                          ),
-                          items: List.generate(
-                              state.homeData.projects!.length,
-                              (index) => ProjectItem(
-                                    project: state.homeData.projects![index],
-                                  )).toList(),
-                        );
-                      }
-                      if (state is FetchHomeDataFailure) {
-                        SizedBox(
-                          height: 450,
-                          width: size.width,
-                          child: Center(
-                            child: CustomButton(
-                              title: "Try again",
-                              onPressed: () {
-                                context.read<HomeBloc>().add(HomeDataFetched());
-                              },
-                            ),
-                          ),
-                        );
-                      }
 
-                      return SizedBox(
-                        height: 450,
-                        width: size.width,
-                        child: const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                      );
-                    },
+    return Container(
+      color: Colors.black,
+      child: Column(
+        children: [
+          const SizedBox(height: spacer),
+          Text(
+            "Projects",
+            style: style,
+          ),
+          const SizedBox(height: spacer),
+          BlocBuilder<HomeBloc, HomeState>(
+            builder: (context, state) {
+              if (state is FetchHomeDataFailure) {
+                SizedBox(
+                  height: 450,
+                  width: size.width,
+                  child: Center(
+                    child: CustomButton(
+                      title: "Try again",
+                      onPressed: () {
+                        context.read<HomeBloc>().add(HomeDataFetched());
+                      },
+                    ),
                   ),
-                ],
-              ),
-            ),
+                );
+              }
+
+              if (state is FetchHomeDataSuccess) {
+                return GridView.count(
+                  shrinkWrap: true,
+                  crossAxisCount:
+                      getCrossAxisCount(MediaQuery.of(context).size.width),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  children: List.generate(
+                      state.homeData.projects!.length,
+                      (index) => Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 20),
+                            child: ProjectItem(
+                              project: state.homeData.projects![index],
+                            ),
+                          )).toList(),
+                );
+              }
+
+              return SizedBox(
+                height: 450,
+                width: size.width,
+                child: const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            },
           ),
-          Padding(
-            padding: const EdgeInsets.only(
-              right: 50,
-            ),
-            child: Align(
-              alignment: Alignment.topRight,
-              child: Image.asset(
-                assetsPathGenerator("images/abs_logo.png"),
-                width: 150,
-              ),
-            ),
-          ),
+          const SizedBox(height: spacer),
         ],
       ),
     );
+  }
+
+  int getCrossAxisCount(double width) {
+    if (width < 600) {
+      return 1;
+    } else if (width < 900) {
+      return 2;
+    } else if (width < 1200) {
+      return 3;
+    } else {
+      return 4;
+    }
   }
 }
 
@@ -145,16 +126,10 @@ class _ProjectItemState extends State<ProjectItem> {
 
     return GestureDetector(
       onTap: () {
-        // Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //       builder: (context) =>
-        //           ImagePreviewScreen(images: widget.project.images!),
-        //     ));
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => PorjectDetailScreen(item: widget.project),
+              builder: (context) => ProjectDetailScreen(item: widget.project),
             ));
       },
       child: CustomMouseRegion(
@@ -170,8 +145,6 @@ class _ProjectItemState extends State<ProjectItem> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Container(
-            width: isMobile ? size.width * .9 : 450,
-            height: 450,
             decoration: BoxDecoration(
               color: Constants.creamColor.withOpacity(.2),
               borderRadius: BorderRadius.circular(10),
@@ -179,16 +152,17 @@ class _ProjectItemState extends State<ProjectItem> {
             child: Column(
               children: [
                 Material(
+                  color: Constants.creamColor.withOpacity(.2),
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   borderRadius: const BorderRadius.vertical(
                     top: Radius.circular(10),
                   ),
                   child: ExtendedImage.network(
                     widget.project.banner ?? "",
-                    height: 330,
                     width: size.width * .9,
                     fit: BoxFit.cover,
                     cache: true,
+                    enableLoadState: false,
                   ),
                 ),
                 const Expanded(
@@ -209,6 +183,7 @@ class _ProjectItemState extends State<ProjectItem> {
                             Text(
                               widget.project.title ?? "Unknown",
                               style: style.copyWith(
+                                  fontSize: 20,
                                   color: isHover
                                       ? Constants.orangeColor
                                       : Constants.creamColor),
@@ -236,12 +211,15 @@ class _ProjectItemState extends State<ProjectItem> {
                           ],
                         ),
                       ),
+                      const SizedBox(
+                        width: 10,
+                      ),
                       Icon(
                         Icons.arrow_forward,
                         color: isHover
                             ? Constants.orangeColor
                             : Constants.creamColor,
-                        size: 60,
+                        size: 30,
                       )
                     ],
                   ),
