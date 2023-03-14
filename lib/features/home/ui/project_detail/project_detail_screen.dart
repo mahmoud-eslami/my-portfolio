@@ -1,194 +1,328 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio/core/global_widgets/custom_button.dart';
-import 'package:flutter_portfolio/core/global_widgets/custom_cache_image.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_portfolio/core/utils/url_launcher.dart';
 import 'package:flutter_portfolio/features/home/data/model/home_model.dart';
-import 'package:flutter_portfolio/features/home/ui/image_preview/image_preview_screen.dart';
 
 import '../../../../core/constants/constants.dart';
+import '../../../../core/global_widgets/custom_cache_image.dart';
 import '../../../../core/utils/size_checker.dart';
-import 'widgets/technologies_builder.dart';
+import '../home/widgets/skills_sections.dart';
 
-class PorjectDetailScreen extends StatelessWidget {
-  const PorjectDetailScreen({super.key, required this.item});
+class ProjectDetailScreen extends HookWidget {
+  const ProjectDetailScreen({super.key, required this.item});
 
   final Projects item;
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    var style = Theme.of(context).textTheme;
+    final currentIndex = useState(0);
+
+    var size = MediaQuery
+        .of(context)
+        .size;
+    var style = Theme
+        .of(context)
+        .textTheme;
     bool isMobile = SizeChecker.isMobile(context);
     bool isTablet = size.width > 600 && size.width < 900;
     return Scaffold(
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            width: isMobile
-                ? size.width * .8
-                : isTablet
-                    ? size.width * .7
-                    : size.width * .5,
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: size.height * .03,
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                          onPressed: () => Navigator.pop(context),
-                          icon: const Icon(Icons.arrow_back)),
-                      Text(
-                        "Project Details",
-                        style: style.headlineSmall?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+        backgroundColor: Constants.creamColor,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: Text(
+            item.title ?? "Unknown",
+            style: style.headlineSmall?.copyWith(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: size.height * .01,
+              ),
+              if (item.images == null || item.images!.isEmpty) ...[
+                Container(
+                  width: 280,
+                  height: 500,
+                  decoration: BoxDecoration(
+                    borderRadius:
+                    BorderRadius.circular(Constants.defaultBorderRadius),
+                    color: Colors.black,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: size.height * .03,
+                  child: Material(
+                    borderRadius:
+                    BorderRadius.circular(Constants.defaultBorderRadius),
+                    clipBehavior: Clip.hardEdge,
+                    child: CustomCacheImage(
+                      path: item.banner!,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                  Stack(
-                    children: [
-                      Material(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                            Constants.defaultBorderRadius,
-                          ),
-                          side: const BorderSide(
-                            color: Colors.black,
-                            width: 3,
-                          ),
-                        ),
-                        child: CustomCacheImage(
-                          width: double.infinity,
-                          height: size.width * (isMobile ? .5 : .3),
-                          path: item.banner!,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(Constants.defaultPadding),
-                        child: Align(
-                          alignment: Alignment.bottomRight,
-                          child: CustomButton(
-                            title: "More Images",
-                            textStyle: Theme.of(context)
-                                .textTheme
-                                .titleSmall
-                                ?.copyWith(fontWeight: FontWeight.bold),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ImagePreviewScreen(
-                                        images: item.images ?? []),
-                                  ));
-                            },
-                            width: isMobile
-                                ? size.width * .3
-                                : isTablet
-                                    ? size.width * .2
-                                    : Constants.desktopButtonWidth,
-                            height: isMobile
-                                ? Constants.mobileBtnHeight
-                                : Constants.desktopButtonHeight,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: size.height * .03,
-                  ),
-                  RichText(
-                    text: TextSpan(
+                ),
+                SizedBox(
+                  height: size.height * .03,
+                ),
+              ],
+              if (item.images != null && item.images!.isNotEmpty)
+                SizedBox(
+                  height: size.height * .8,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TextSpan(
-                          text: "Title : ",
-                          style: style.headlineSmall?.copyWith(
-                            fontWeight: FontWeight.bold,
+                        SizedBox(
+                          height: size.height * .03,
+                        ),
+                        Expanded(
+                          flex: 7,
+                          child: Container(
+                            width: 280,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                  Constants.defaultBorderRadius),
+                              color: Colors.black,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 5,
+                                  blurRadius: 7,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: CustomCacheImage(
+                              path: item.images![currentIndex.value],
+                            ),
                           ),
                         ),
-                        TextSpan(
-                          text: item.title ?? "Unknown",
-                          style: style.headlineSmall?.copyWith(),
+                        SizedBox(
+                          height: size.height * .02,
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: List.generate(
+                                item.images!.length,
+                                    (index) =>
+                                    GestureDetector(
+                                      onTap: () {
+                                        currentIndex.value = index;
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: Constants
+                                                .defaultPadding),
+                                        child: Stack(
+                                          children: [
+                                            Material(
+                                              clipBehavior:
+                                              Clip.antiAliasWithSaveLayer,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius
+                                                    .circular(
+                                                    Constants
+                                                        .defaultBorderRadius),
+                                                side: BorderSide(
+                                                  color: Constants.orangeColor,
+                                                  width:
+                                                  (currentIndex.value == index)
+                                                      ? 4
+                                                      : 0,
+                                                ),
+                                              ),
+                                              child: SizedBox(
+                                                width: (currentIndex.value ==
+                                                    index)
+                                                    ? 100
+                                                    : 30,
+                                                height: 100,
+                                                child: CustomCacheImage(
+                                                  fit: BoxFit.cover,
+                                                  path: item.images![index],
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              width: (currentIndex.value ==
+                                                  index)
+                                                  ? 100
+                                                  : 30,
+                                              height: 100,
+                                              decoration: BoxDecoration(
+                                                color: currentIndex.value ==
+                                                    index
+                                                    ? Colors.transparent
+                                                    : Colors.black.withOpacity(
+                                                    .6),
+                                                borderRadius: BorderRadius
+                                                    .circular(
+                                                    Constants
+                                                        .defaultBorderRadius),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                              ).toList(),
+                            ),
+                          ),
                         ),
                       ],
                     ),
                   ),
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "Description : ",
-                          style: style.headlineSmall?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        TextSpan(
-                          text: item.description ?? "Unknown",
-                          style: style.headlineSmall?.copyWith(),
-                        ),
-                      ],
-                    ),
-                  ),
-                  if (item.isOpenSource ?? false)
+                ),
+              DetailsSection(item: item),
+            ],
+          ),
+        ));
+  }
+}
+
+class DetailsSection extends HookWidget {
+  const DetailsSection({Key? key, required this.item}) : super(key: key);
+
+  final Projects item;
+
+  @override
+  Widget build(BuildContext context) {
+    final tabIndex = useState(0);
+
+    var size = MediaQuery
+        .of(context)
+        .size;
+    var style = Theme
+        .of(context)
+        .textTheme;
+    bool isMobile = SizeChecker.isMobile(context);
+    bool isTablet = size.width > 600 && size.width < 900;
+    List titles = ["Description", "Technologies"];
+
+    return Container(
+      width: size.width,
+      color: Colors.black,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                titles.length,
+                    (index) =>
                     GestureDetector(
-                      onTap: () {
-                        launchTheUrl(item.link ?? "");
-                      },
-                      child: RichText(
-                        text: TextSpan(
+                      onTap: () => tabIndex.value = index,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 40),
+                        child: Column(
                           children: [
-                            TextSpan(
-                              text: "Link : ",
-                              style: style.headlineSmall?.copyWith(
+                            Text(
+                              titles[index],
+                              style: TextStyle(
+                                fontSize: 30,
                                 fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic,
+                                color: tabIndex.value == index
+                                    ? Constants.orangeColor
+                                    : Constants.creamColor,
                               ),
                             ),
-                            TextSpan(
-                              text: "Open Source",
-                              style: style.headlineSmall?.copyWith(
-                                color: Colors.blue,
-                                decoration: TextDecoration.underline,
-                              ),
-                              mouseCursor: SystemMouseCursors.click,
+                            const SizedBox(
+                              height: 10,
                             ),
+                            if (tabIndex.value == index)
+                              Container(
+                                width: 10,
+                                height: 10,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Constants.orangeColor,
+                                ),
+                              ),
                           ],
                         ),
                       ),
                     ),
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "Technologies : ",
-                          style: style.headlineSmall?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  TechnologiesBuilder(techs: item.technologies ?? []),
-                  SizedBox(
-                    height: size.height * .03,
-                  ),
-                ],
               ),
             ),
-          ),
-        ],
+            const SizedBox(
+              height: 50,
+            ),
+            if (tabIndex.value == 0) ...[
+
+              if (item.isOpenSource!)
+                GestureDetector(
+                  onTap: () {
+                    launchTheUrl(item.link!);
+                  },
+                  child: const Text(
+                    "Open source | check source code",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blueAccent,
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              const SizedBox(
+                height: 20,
+              ),
+              Center(
+                child: SizedBox(
+                  width: 400,
+                  child: Text(
+                    item.description!,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 29,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+
+            ],
+            if (tabIndex.value == 1)
+              SizedBox(
+                width: 600,
+                child: Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  alignment: WrapAlignment.center,
+                  direction: Axis.horizontal,
+                  children: List.generate(
+                    item.technologies!.length,
+                        (index) =>
+                        SkillItem(
+                          title: item.technologies![index],
+                          isLong: true,
+                          lightTitle: true,
+                        ),
+                  ).toList(),
+                ),
+              ),
+            const SizedBox(
+              height: 50,
+            ),
+          ],
+        ),
       ),
     );
   }

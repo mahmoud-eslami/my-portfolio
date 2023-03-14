@@ -121,17 +121,21 @@ class SkillItem extends StatelessWidget {
     required this.title,
     this.imagePath,
     this.isLong = false,
+    this.lightTitle = false,
   });
 
   final String title;
   final String? imagePath;
-  final bool isLong;
+  final bool isLong, lightTitle;
+
   @override
   Widget build(BuildContext context) {
     var style = TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: Constants.mobileCaptionSize,
-      color: (imagePath != null) ? Constants.creamColor : Colors.black,
+      color: (imagePath != null || lightTitle)
+          ? Constants.creamColor
+          : Colors.black,
     );
     return Padding(
       padding: const EdgeInsets.all(Constants.mobilePadding),
