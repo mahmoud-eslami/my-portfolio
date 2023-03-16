@@ -7,6 +7,7 @@ import 'package:flutter_portfolio/core/global_widgets/animation_builder.dart';
 
 import '../../../../../core/global_widgets/custom_button.dart';
 import '../../../../../core/utils/size_checker.dart';
+import '../../../../../core/utils/url_launcher.dart';
 import '../../../bloc/bloc/home_bloc.dart';
 
 class ButtonsSection extends StatelessWidget {
