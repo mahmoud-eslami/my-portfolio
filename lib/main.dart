@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/features/home/presentation/view/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'core/constant/app_colors.dart';
 import 'core/constant/strings.dart';
 
 void main() {
@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         fontFamily: GoogleFonts.crimsonText().fontFamily,
+        scaffoldBackgroundColor: AppColors.testColor,
       ),
       home: const HomePage(),
     );

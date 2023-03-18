@@ -1,8 +1,15 @@
+import 'dart:js' as js;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_portfolio/core/constant/app_colors.dart';
+import 'package:flutter_portfolio/core/extensions/margin_extension.dart';
+import 'package:flutter_portfolio/core/extensions/numbers_extension.dart';
+import 'package:flutter_portfolio/core/utils/margin_calculator.dart';
 import 'package:flutter_portfolio/features/home/data/model/home_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../../core/constant/strings.dart';
 import '../../provider/home_provider.dart';
 
 class SocialInfoWidget extends HookConsumerWidget {
@@ -10,67 +17,101 @@ class SocialInfoWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final animationController = useAnimationController(
-      duration: const Duration(milliseconds: 1200),
-      lowerBound: 0,
-      upperBound: 1,
-    );
-
     final isLoading = ref.watch(homeDataProvider).isLoading;
     final data = ref.watch(homeDataProvider).data;
-    useEffect(() {
-      if (isLoading == false) {
-        animationController.forward();
-      }
-      return;
-    });
 
     return isLoading
-        ? const Center(child: CircularProgressIndicator())
-        : FadeTransition(
-            opacity: animationController,
-            child: Column(
-              children: [
-                FadeTransition(
-                  opacity: animationController,
-                  child: Text("I am on social"),
+        ? Container()
+        : Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                Strings.socialTitle,
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 24,
+                  color: AppColors.fontColor,
                 ),
-                ListView(
-                  shrinkWrap: true,
-                  children: List.generate(
-                    data.socials!.length,
-                    (index) => SocialItem(socialData: data.socials![index]),
-                  ).toList(),
-                ),
-              ],
-            ),
+              ),
+              50.heightSizedBox,
+              ListView(
+                shrinkWrap: true,
+                children: List.generate(
+                  data.socials!.length,
+                  (index) => SocialItem(
+                    socialData: data.socials![index],
+                  ),
+                ).toList(),
+              ),
+              70.heightSizedBox,
+            ],
           );
   }
 }
 
-class SocialItem extends StatelessWidget {
+class SocialItem extends HookWidget {
   const SocialItem({required this.socialData, super.key});
 
   final SocialItemData socialData;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(socialData.name!),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Container(
-            width: 200,
-            height: 1,
-            color: Colors.black,
-          ),
+    final isHovered = useState(false);
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * .3,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              socialData.name!,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+                color: AppColors.fontColor.withOpacity(.7),
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Container(
+                  width: 1,
+                  height: .2,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                js.context.callMethod('open', [socialData.link]);
+              },
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click,
+                onEnter: (event) {
+                  isHovered.value = true;
+                },
+                onExit: (event) {
+                  isHovered.value = false;
+                },
+                child: Text(
+                  socialData.username!,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.linkFontColor,
+                    decoration: isHovered.value
+                        ? TextDecoration.underline
+                        : TextDecoration.none,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
-        Text(
-          socialData.username!,
-          style: const TextStyle(color: Colors.blue),
-        ),
-      ],
-    );
+      ),
+    ).withHorizontalMargin(marginCalculator(context));
   }
 }
