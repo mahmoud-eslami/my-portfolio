@@ -1,24 +1,28 @@
 typedef HomeData = HomeModel;
 typedef SocialItemData = Socials;
+typedef ExperienceItemData = Experiences;
+typedef ProjectItemData = Projects;
 
 class HomeModel {
-  String? jobTitle;
+  String? mainTitle;
   String? aboutMe;
   String? resumeLink;
   List<Socials>? socials;
   List<Projects>? projects;
   List<Skills>? skills;
+  List<Experiences>? experiences;
 
   HomeModel(
-      {this.jobTitle,
+      {this.mainTitle,
       this.aboutMe,
       this.resumeLink,
       this.socials,
       this.projects,
-      this.skills});
+      this.skills,
+      this.experiences});
 
   HomeModel.fromJson(Map<String, dynamic> json) {
-    jobTitle = json["job_title"];
+    mainTitle = json["main_title"];
     aboutMe = json["about_me"];
     resumeLink = json["resume_link"];
     socials = json["socials"] == null
@@ -30,23 +34,56 @@ class HomeModel {
     skills = json["skills"] == null
         ? null
         : (json["skills"] as List).map((e) => Skills.fromJson(e)).toList();
+    experiences = json["experiences"] == null
+        ? null
+        : (json["experiences"] as List)
+            .map((e) => Experiences.fromJson(e))
+            .toList();
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["job_title"] = jobTitle;
-    _data["about_me"] = aboutMe;
-    _data["resume_link"] = resumeLink;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["main_title"] = mainTitle;
+    data["about_me"] = aboutMe;
+    data["resume_link"] = resumeLink;
     if (socials != null) {
-      _data["socials"] = socials?.map((e) => e.toJson()).toList();
+      data["socials"] = socials?.map((e) => e.toJson()).toList();
     }
     if (projects != null) {
-      _data["projects"] = projects?.map((e) => e.toJson()).toList();
+      data["projects"] = projects?.map((e) => e.toJson()).toList();
     }
     if (skills != null) {
-      _data["skills"] = skills?.map((e) => e.toJson()).toList();
+      data["skills"] = skills?.map((e) => e.toJson()).toList();
     }
-    return _data;
+    if (experiences != null) {
+      data["experiences"] = experiences?.map((e) => e.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Experiences {
+  String? companyName;
+  String? role;
+  String? date;
+  String? description;
+
+  Experiences({this.companyName, this.role, this.date, this.description});
+
+  Experiences.fromJson(Map<String, dynamic> json) {
+    companyName = json["company_name"];
+    role = json["role"];
+    date = json["date"];
+    description = json["description"];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["company_name"] = companyName;
+    data["role"] = role;
+    data["date"] = date;
+    data["description"] = description;
+    return data;
   }
 }
 
@@ -68,13 +105,13 @@ class Skills {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["title"] = title;
-    _data["description"] = description;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["title"] = title;
+    data["description"] = description;
     if (skillItems != null) {
-      _data["skillItems"] = skillItems?.map((e) => e.toJson()).toList();
+      data["skillItems"] = skillItems?.map((e) => e.toJson()).toList();
     }
-    return _data;
+    return data;
   }
 }
 
@@ -92,11 +129,11 @@ class SkillItems {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["title"] = title;
-    _data["long"] = long;
-    _data["image"] = image;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["title"] = title;
+    data["long"] = long;
+    data["image"] = image;
+    return data;
   }
 }
 
@@ -131,19 +168,19 @@ class Projects {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["title"] = title;
-    _data["description"] = description;
-    _data["banner"] = banner;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["title"] = title;
+    data["description"] = description;
+    data["banner"] = banner;
     if (images != null) {
-      _data["images"] = images;
+      data["images"] = images;
     }
-    _data["isOpenSource"] = isOpenSource;
-    _data["link"] = link;
+    data["isOpenSource"] = isOpenSource;
+    data["link"] = link;
     if (technologies != null) {
-      _data["technologies"] = technologies;
+      data["technologies"] = technologies;
     }
-    return _data;
+    return data;
   }
 }
 
@@ -161,10 +198,10 @@ class Socials {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["name"] = name;
-    _data["link"] = link;
-    _data["username"] = username;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["name"] = name;
+    data["link"] = link;
+    data["username"] = username;
+    return data;
   }
 }
