@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:flutter/material.dart' show Colors;
-import 'package:flutter_portfolio/extensions/string_extensions.dart';
+import 'package:flutter_portfolio/core/extensions/string_extensions.dart';
 
 @immutable
 class AppColors {
