@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_portfolio/di.dart';
-import 'package:flutter_portfolio/features/home/ui/home/home_screen.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-void main() async {
-  await DependencyInjection.initializer();
-  runApp(const MyApp());
+import 'constant/strings.dart';
+
+void main() {
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -12,30 +12,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OrientationBuilder(builder: (context, orientation) {
-      return LayoutBuilder(builder: (context, constraints) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Mahmoud Eslami',
-          theme: ThemeData(
-            appBarTheme: AppBarTheme(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              titleTextStyle:
-                  Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-            ),
-            primarySwatch: Colors.orange,
-            fontFamily: "dosis",
-            scaffoldBackgroundColor: Colors.white,
-          ),
-          home: const SelectionArea(
-            child: HomeScreen(),
-          ),
-        );
-      });
-    });
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: Strings.appName,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const Scaffold(),
+    );
   }
 }
