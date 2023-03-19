@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_portfolio/core/extensions/margin_extension.dart';
 import 'package:flutter_portfolio/core/extensions/numbers_extension.dart';
 import 'package:flutter_portfolio/core/utils/size_util.dart';
 
@@ -79,7 +78,7 @@ class NerdLottieAnimation extends HookConsumerWidget {
         child: Lottie.asset(
           alignment: Alignment.center,
           width: 200,
-          assetsPathGenerator('assets/images/fnerd.json'),
+          assetsPathGenerator('images/fnerd.json'),
         ),
       ),
     );

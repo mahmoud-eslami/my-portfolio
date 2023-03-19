@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter_portfolio/core/extensions/object_extensions.dart';
 import 'package:flutter_portfolio/features/home/data/api/home_api.dart';
 import 'package:flutter_portfolio/features/home/data/model/home_model.dart';
@@ -12,7 +11,7 @@ class HomeRepository {
     try {
       final data = await _homeApi.fetchHomeData();
       return HomeData.fromJson(data);
-    } on DioError catch (e) {
+    } catch (e) {
       e.log();
       rethrow;
     }
