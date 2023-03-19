@@ -28,6 +28,7 @@ class ProjectsOverviewWidget extends HookConsumerWidget {
             child: Column(
               children: [
                 GridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   crossAxisCount:
                       isMobile(context) ? 1 : 2, // set two items in each row

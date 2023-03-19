@@ -3,7 +3,6 @@ import 'dart:js' as js;
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_portfolio/core/constant/app_colors.dart';
-import 'package:flutter_portfolio/core/extensions/margin_extension.dart';
 import 'package:flutter_portfolio/core/extensions/numbers_extension.dart';
 
 import 'package:flutter_portfolio/core/utils/size_util.dart';
@@ -39,6 +38,7 @@ class SocialInfoWidget extends HookConsumerWidget {
                 ),
                 50.heightSizedBox,
                 ListView(
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   children: List.generate(
                     data.socials!.length,
