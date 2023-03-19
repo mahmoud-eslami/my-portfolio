@@ -79,7 +79,7 @@ class NerdLottieAnimation extends HookConsumerWidget {
         child: Lottie.asset(
           alignment: Alignment.center,
           width: 200,
-          assetsPathGenerator('assets/images/fnerd.json'),
+          assetsPathGenerator('images/fnerd.json'),
         ),
       ),
     );
