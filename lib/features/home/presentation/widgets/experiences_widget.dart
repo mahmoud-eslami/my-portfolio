@@ -3,7 +3,8 @@ import 'dart:js' as js;
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/core/extensions/margin_extension.dart';
 import 'package:flutter_portfolio/core/extensions/numbers_extension.dart';
-import 'package:flutter_portfolio/core/utils/margin_calculator.dart';
+import 'package:flutter_portfolio/core/utils/size_util.dart';
+
 import 'package:flutter_portfolio/features/home/data/model/home_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -23,40 +24,44 @@ class ExperiencesWidget extends HookConsumerWidget {
 
     return isLoading
         ? Container()
-        : Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    Strings.pastPresent,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 24,
-                      color: AppColors.fontColor,
+        : SizedBox(
+            width: getComponentFixedWidth(context),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      Strings.pastPresent,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 24,
+                        color: AppColors.fontColor,
+                      ),
                     ),
-                  ),
-                  IconButton(
-                      onPressed: () {
-                        js.context.callMethod('open', [data.socials![1].link]);
-                      },
-                      icon: const Icon(Icons.link)),
-                ],
-              ),
-              50.heightSizedBox,
-              ListView(
-                shrinkWrap: true,
-                children: List.generate(
-                  data.experiences!.length,
-                  (index) => ExperienceItem(
-                    item: data.experiences![index],
-                  ),
-                ).toList(),
-              ),
-              70.heightSizedBox,
-            ],
+                    IconButton(
+                        onPressed: () {
+                          js.context
+                              .callMethod('open', [data.socials![1].link]);
+                        },
+                        icon: const Icon(Icons.link)),
+                  ],
+                ),
+                50.heightSizedBox,
+                ListView(
+                  shrinkWrap: true,
+                  children: List.generate(
+                    data.experiences!.length,
+                    (index) => ExperienceItem(
+                      item: data.experiences![index],
+                    ),
+                  ).toList(),
+                ),
+                100.heightSizedBox,
+              ],
+            ),
           );
   }
 }
@@ -127,7 +132,7 @@ class ExperienceItem extends HookConsumerWidget {
               ),
             ),
           ],
-        ).withHorizontalMargin(marginCalculator(context)),
+        ),
       ),
     );
   }

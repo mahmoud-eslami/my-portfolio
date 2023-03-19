@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_portfolio/core/extensions/margin_extension.dart';
 import 'package:flutter_portfolio/core/extensions/numbers_extension.dart';
-import 'package:flutter_portfolio/core/utils/margin_calculator.dart';
+import 'package:flutter_portfolio/core/utils/size_util.dart';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lottie/lottie.dart';
 
@@ -20,32 +21,35 @@ class AboutMeWidget extends HookConsumerWidget {
 
     return isLoading
         ? Container()
-        : Column(
-            children: [
-              50.heightSizedBox,
-              const NerdLottieAnimation(),
-              10.heightSizedBox,
-              Text(
-                data.mainTitle!,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 24,
-                  color: AppColors.fontColor,
+        : SizedBox(
+            width: getComponentFixedWidth(context),
+            child: Column(
+              children: [
+                50.heightSizedBox,
+                const NerdLottieAnimation(),
+                10.heightSizedBox,
+                Text(
+                  data.mainTitle!,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 24,
+                    color: AppColors.fontColor,
+                  ),
                 ),
-              ),
-              50.heightSizedBox,
-              Text(
-                data.aboutMe!,
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 20,
-                  color: AppColors.fontColor,
+                50.heightSizedBox,
+                Text(
+                  data.aboutMe!,
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 20,
+                    color: AppColors.fontColor,
+                  ),
                 ),
-              ).withHorizontalMargin(marginCalculator(context)),
-              50.heightSizedBox,
-            ],
+                50.heightSizedBox,
+              ],
+            ),
           );
   }
 }

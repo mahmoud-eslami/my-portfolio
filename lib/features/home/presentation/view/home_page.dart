@@ -34,9 +34,10 @@ class HomePage extends HookConsumerWidget {
           child: FadeTransition(
             opacity: animationController,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: const [
                 AboutMeWidget(),
-                ProjectsOverviewWidget(),
+                Center(child: ProjectsOverviewWidget()),
                 ExperiencesWidget(),
                 SocialInfoWidget(),
                 CopyRightWidget(),
