@@ -7,4 +7,11 @@ extension MarginExtension on Widget {
       child: this,
     );
   }
+
+  Widget withVerticalMargin(double margin) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: margin),
+      child: this,
+    );
+  }
 }
